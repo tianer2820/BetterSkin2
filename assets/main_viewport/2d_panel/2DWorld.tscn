@@ -1,0 +1,150 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+signal open_bg_menu
+signal open_ref_menu
+
+
+onready var camera = $Camera2D
+
+
+func _ready() -> void:
+	DocumentManager.connect(\"document_render_changed\", self, \"_update_render\")
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		event = event as InputEventMouseButton
+		if event.button_index == BUTTON_RIGHT:
+			# popup menu
+			get_tree().set_input_as_handled()
+			emit_signal(\"open_bg_menu\")
+
+
+
+func move_camera(delta: Vector2):
+	camera.position += delta * camera.zoom.x
+
+func scale_camera(factor: float):
+	camera.zoom *= factor
+
+func reset_camera():
+	camera.position = Vector2(0, 0)
+	camera.zoom = Vector2(0.2, 0.2)
+
+
+func _update_render():
+	var new_texture = ImageTexture.new()
+	new_texture.create_from_image(DocumentManager.rendered_skin, 0)
+	$\"2DSkinRect\".texture = new_texture
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends TextureRect
+
+
+var pressed = false
+var _last_dot: Vector2
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		event = event as InputEventMouseButton
+		if event.button_index == BUTTON_LEFT:
+			if event.pressed:
+				pressed = true
+				if event.control:
+					_pick_color()
+				else:
+					ToolManager.pen_down(get_local_mouse_position())
+			else:
+				# released
+				pressed = false
+				ToolManager.pen_up(get_local_mouse_position())
+	
+	elif event is InputEventMouseMotion:
+		event = event as InputEventMouseMotion
+		if pressed:
+			if event.control:
+				_pick_color()
+			else:
+				# continue draw
+				ToolManager.pen_move(get_local_mouse_position())
+
+func _pick_color():
+	var pos = get_local_mouse_position()
+	var img = DocumentManager.rendered_skin
+	img.lock()
+	var color = img.get_pixelv(pos)
+	img.unlock()
+	ToolManager.set_prime_color(color)
+
+func _draw_dot(link: bool):
+	var prime_color = ToolManager.get_prime_color()
+	
+	var pos = get_local_mouse_position()
+	var img = DocumentManager.active_document.get_layers()[0].image
+	img.lock()
+	if link:
+		var line = pos - _last_dot
+		if abs(line.x) > abs(line.y):
+			# flat
+			for x in range(int(abs(line.x)) + 1):
+				var re_x = x * sign(line.x)
+				var y = 1 / line.aspect() * re_x
+				img.set_pixel(_last_dot.x + re_x,
+						_last_dot.y + y, prime_color)
+		else:
+			# steep
+			for y in range(int(abs(line.y)) + 1):
+				var re_y = y * sign(line.y)
+				var x = line.aspect() * re_y
+				img.set_pixel(_last_dot.x + x,
+						_last_dot.y + re_y, prime_color)
+	else:
+		img.set_pixel(pos.x, pos.y, prime_color)
+	img.unlock()
+
+#	texture = ImageTexture.new()
+#	texture.create_from_image(img, 0)
+	
+	_last_dot = pos
+	
+	DocumentManager._document_modified()
+"
+
+[node name="2DWorld" type="Node2D"]
+script = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.2, 0.2 )
+
+[node name="2DSkinRect" type="TextureRect" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource( 1 )
+script = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RefContainer" type="Node2D" parent="."]

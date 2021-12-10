@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/tool_settings_panel/property_panels/integer_panel.gd" type="Script" id=1]
+
+[node name="IntegerPanel" type="HBoxContainer"]
+margin_right = 245.0
+margin_bottom = 24.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 5.0
+margin_right = 27.0
+margin_bottom = 19.0
+text = "Text"
+
+[node name="SpinBox" type="SpinBox" parent="."]
+margin_left = 31.0
+margin_right = 245.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[connection signal="value_changed" from="SpinBox" to="." method="_on_SpinBox_value_changed"]

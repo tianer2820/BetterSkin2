@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/main_viewport/viewport_splitter.gd" type="Script" id=1]
+[ext_resource path="res://assets/main_viewport/menu_box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/main_viewport/3d_panel/3d_panel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/main_viewport/2d_panel/2d_panel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/main_viewport/main_viewport.gd" type="Script" id=5]
+
+[node name="MainViewPort" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainBox" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 953.0
+margin_bottom = 533.0
+
+[node name="MenuBox" parent="MainBox" instance=ExtResource( 2 )]
+
+[node name="HSplit" type="HSplitContainer" parent="MainBox"]
+margin_top = 24.0
+margin_right = 946.0
+margin_bottom = 526.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 403
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3DPanel" parent="MainBox/HSplit" instance=ExtResource( 3 )]
+
+[node name="2DPanel" parent="MainBox/HSplit" instance=ExtResource( 4 )]
+
+[connection signal="dragged" from="MainBox/HSplit" to="MainBox/HSplit" method="_on_splitter_dragged"]
+[connection signal="resized" from="MainBox/HSplit" to="MainBox/HSplit" method="_on_splitter_resized"]

@@ -1,0 +1,39 @@
+# BetterSkin2
+BetterSkin2 aims to be a feature-rich, customizable and easy-to-use Minecraft skin editor.
+
+*BetterSkin is my previous c++ project, which is unfinished, so this project is called BetterSkin2*
+
+**This project is not production ready yet**
+
+## Why another skin editor
+There are a lot of MC skin editor out there, but each of them have some issues including:
+- Only available online
+- Lack modern features that other drawing softwares provide
+- Not customizable
+- Some are not maintained anymore
+
+Solving these problems is the primary goal of this project.
+
+## Planned Features
+**Main features**
+- customizable pen tools
+- convinient color picker
+- supports layers
+- reigon selections, copy/paste, transformation
+- 3D view
+- in-window reference images
+- supports higher resolution
+
+**Additional (less prioritized) features**
+- switch camera mode
+- grease pencil like blender
+- advanced color mixer
+- format converting
+- filters/effects
+- plugins
+- paint custom models
+
+## Contirbute
+This projects is still in its very early stage, any api/structure may change, so no pull request will be accepted.
+
+Contributions are welcomed after V1.0 is out, after the main architecture is fixed.

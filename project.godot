@@ -1,0 +1,77 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "BrushTip",
+"language": "GDScript",
+"path": "res://scripts/brush_tip.gd"
+}, {
+"base": "Control",
+"class": "PropPanelBase",
+"language": "GDScript",
+"path": "res://assets/tool_settings_panel/property_panels/property_panel_base.gd"
+}, {
+"base": "Reference",
+"class": "SkinDocument",
+"language": "GDScript",
+"path": "res://scripts/skin_document/skin_document.gd"
+}, {
+"base": "Reference",
+"class": "SkinLayer",
+"language": "GDScript",
+"path": "res://scripts/skin_document/skin_layer.gd"
+}, {
+"base": "Reference",
+"class": "ToolBase",
+"language": "GDScript",
+"path": "res://scripts/tool_base.gd"
+}, {
+"base": "Reference",
+"class": "ToolProp",
+"language": "GDScript",
+"path": "res://scripts/tool_prop.gd"
+} ]
+_global_script_class_icons={
+"BrushTip": "",
+"PropPanelBase": "",
+"SkinDocument": "",
+"SkinLayer": "",
+"ToolBase": "",
+"ToolProp": ""
+}
+
+[application]
+
+config/name="BetterSkin2"
+config/description="An easy to use, feature rich Minecraft skin editor"
+run/main_scene="res://assets/gui_root.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+DocumentManager="*res://scripts/document_manager.gd"
+HistoryManager="*res://scripts/history_manager.gd"
+ToolManager="*res://scripts/tool_manager.gd"
+SkinRenderer="*res://scripts/skin_document/skin_renderer.gd"
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/dpi/allow_hidpi=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

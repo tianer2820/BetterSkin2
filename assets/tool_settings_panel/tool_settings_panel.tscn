@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/tool_settings_panel/tool_settings_panel.gd" type="Script" id=1]
+[ext_resource path="res://assets/tool_settings_panel/property_panels/integer_panel.tscn" type="PackedScene" id=2]
+
+[node name="ToolSettingsPanel" type="PanelContainer"]
+margin_right = 259.0
+margin_bottom = 154.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 252.0
+margin_bottom = 147.0
+
+[node name="Label" type="Label" parent="VBox"]
+margin_right = 245.0
+margin_bottom = 14.0
+text = "Settings"
+
+[node name="Scroll" type="ScrollContainer" parent="VBox"]
+margin_top = 18.0
+margin_right = 245.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBox/Scroll"]
+margin_right = 245.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IntegerPanel" parent="VBox/Scroll/VBox" instance=ExtResource( 2 )]

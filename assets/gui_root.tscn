@@ -1,0 +1,326 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/gui_root.gd" type="Script" id=1]
+[ext_resource path="res://arts/icons.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/tool_settings_panel/tool_settings_panel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/main_viewport/main_viewport.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/main_color_selector/main_color_selector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/tool_selector/tool_selector.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color( 0.247059, 0.239216, 0.278431, 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 1, 1, 6, 7 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 13, 1, 6, 7 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 7, 1, 6, 7 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 25, 1, 6, 7 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 19, 1, 6, 7 )
+
+[node name="GUIRoot" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 957.0
+margin_bottom = 537.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBar" type="HBoxContainer" parent="VBox"]
+margin_right = 954.0
+margin_bottom = 20.0
+
+[node name="FileButton" type="MenuButton" parent="VBox/MenuBar"]
+margin_right = 35.0
+margin_bottom = 20.0
+text = "File"
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+switch_on_hover = true
+
+[node name="EditButton" type="MenuButton" parent="VBox/MenuBar"]
+margin_left = 39.0
+margin_right = 75.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Edit"
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectButton" type="MenuButton" parent="VBox/MenuBar"]
+margin_left = 79.0
+margin_right = 130.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Select"
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayerButton" type="MenuButton" parent="VBox/MenuBar"]
+margin_left = 134.0
+margin_right = 180.0
+margin_bottom = 20.0
+text = "Layer"
+switch_on_hover = true
+
+[node name="ToolsButton" type="MenuButton" parent="VBox/MenuBar"]
+margin_left = 184.0
+margin_right = 230.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Tools"
+switch_on_hover = true
+
+[node name="SettingsButton" type="MenuButton" parent="VBox/MenuBar"]
+margin_left = 234.0
+margin_right = 297.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Settings"
+switch_on_hover = true
+
+[node name="HelpButton" type="MenuButton" parent="VBox/MenuBar"]
+margin_left = 301.0
+margin_right = 343.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Help"
+switch_on_hover = true
+
+[node name="ConvenientBar" type="HBoxContainer" parent="VBox"]
+margin_top = 24.0
+margin_right = 954.0
+margin_bottom = 48.0
+
+[node name="ButtonNew" type="TextureButton" parent="VBox/ConvenientBar"]
+margin_right = 20.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonOpen" type="TextureButton" parent="VBox/ConvenientBar"]
+margin_left = 24.0
+margin_right = 44.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonSave" type="TextureButton" parent="VBox/ConvenientBar"]
+margin_left = 48.0
+margin_right = 68.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonUndo" type="TextureButton" parent="VBox/ConvenientBar"]
+margin_left = 72.0
+margin_right = 92.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonRedo" type="TextureButton" parent="VBox/ConvenientBar"]
+margin_left = 96.0
+margin_right = 116.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="VBox/ConvenientBar"]
+margin_left = 120.0
+margin_right = 124.0
+margin_bottom = 24.0
+
+[node name="ToolSelectButton" type="Button" parent="VBox/ConvenientBar"]
+margin_left = 128.0
+margin_right = 188.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 60, 0 )
+text = "Tool"
+icon = ExtResource( 3 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolShapeButton" type="OptionButton" parent="VBox/ConvenientBar"]
+margin_left = 192.0
+margin_right = 259.0
+margin_bottom = 24.0
+text = "Shape"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBox" type="SpinBox" parent="VBox/ConvenientBar"]
+margin_left = 263.0
+margin_right = 337.0
+margin_bottom = 24.0
+max_value = 16.0
+align = 1
+prefix = "Size:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="VBox/ConvenientBar"]
+margin_left = 341.0
+margin_right = 441.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 1
+max_value = 16.0
+tick_count = 17
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBox/ConvenientBar/HSlider"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Brush Size"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CustomValue" type="HBoxContainer" parent="VBox/ConvenientBar"]
+margin_left = 445.0
+margin_right = 595.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="VBox/ConvenientBar/CustomValue"]
+margin_right = 135.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 16.0
+step = 1.0
+value = 5.0
+percent_visible = false
+
+[node name="Label" type="Label" parent="VBox/ConvenientBar/CustomValue/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Brush Size: 5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinButton" type="TextureRect" parent="VBox/ConvenientBar/CustomValue"]
+margin_left = 135.0
+margin_right = 150.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 15, 0 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Control" type="Control" parent="VBox/ConvenientBar"]
+margin_left = 599.0
+margin_right = 880.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OptionButton" type="OptionButton" parent="VBox/ConvenientBar"]
+margin_left = 884.0
+margin_right = 954.0
+margin_bottom = 24.0
+button_mask = 3
+text = "Layers"
+
+[node name="MainSplit" type="HSplitContainer" parent="VBox"]
+margin_top = 52.0
+margin_right = 954.0
+margin_bottom = 534.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 196
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsSplit" type="VSplitContainer" parent="VBox/MainSplit"]
+margin_right = 310.0
+margin_bottom = 482.0
+split_offset = 148
+
+[node name="ColorSelector" parent="VBox/MainSplit/SettingsSplit" instance=ExtResource( 6 )]
+margin_right = 310.0
+margin_bottom = 380.0
+
+[node name="ToolSplit" type="VSplitContainer" parent="VBox/MainSplit/SettingsSplit"]
+margin_top = 392.0
+margin_right = 310.0
+margin_bottom = 482.0
+split_offset = 90
+
+[node name="ToolSelector" parent="VBox/MainSplit/SettingsSplit/ToolSplit" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 310.0
+margin_bottom = 46.0
+
+[node name="ToolSettingsPanel" parent="VBox/MainSplit/SettingsSplit/ToolSplit" instance=ExtResource( 4 )]
+margin_top = 58.0
+margin_right = 310.0
+margin_bottom = 90.0
+
+[node name="MainViewport" parent="VBox/MainSplit" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 322.0
+margin_right = 954.0
+margin_bottom = 482.0
+
+[connection signal="pick_color" from="VBox/MainSplit/SettingsSplit/ColorSelector" to="." method="_on_ColorSelector_pick_color"]

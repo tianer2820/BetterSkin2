@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://arts/icons.png" type="Texture" id=1]
+[ext_resource path="res://assets/main_color_selector/circle_selector/color_circle_shader.tres" type="Material" id=2]
+[ext_resource path="res://assets/main_color_selector/circle_selector/color_circle.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 15, 10, 5, 5 )
+
+[node name="ColorCircle" type="ColorRect"]
+material = ExtResource( 2 )
+margin_left = 69.5
+margin_right = 149.5
+margin_bottom = 80.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cursor" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.5
+margin_top = -2.5
+margin_right = 2.5
+margin_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 2.5, 2.5 )
+mouse_filter = 2
+texture = SubResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_rect_changed" from="." to="." method="_on_ColorCircle_item_rect_changed"]

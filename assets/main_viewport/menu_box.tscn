@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://arts/icons.png" type="Texture" id=1]
+[ext_resource path="res://assets/main_viewport/menu_box.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 31, 1, 7, 7 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 45, 1, 7, 7 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 52, 2, 7, 5 )
+
+[node name="MenuBox" type="HBoxContainer"]
+margin_right = 946.0
+margin_bottom = 20.0
+script = ExtResource( 2 )
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_right = 70.0
+margin_bottom = 20.0
+text = "2D/3D"
+items = [ "2D/3D", null, false, 0, null, "2D", null, false, 1, null, "3D", null, false, 2, null ]
+selected = 0
+
+[node name="Control" type="Control" parent="."]
+margin_left = 74.0
+margin_right = 874.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="ButtonAddRef" type="TextureButton" parent="."]
+margin_left = 878.0
+margin_right = 898.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 1 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonShowAllRef" type="TextureButton" parent="."]
+margin_left = 902.0
+margin_right = 922.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="ButtonHideAllRef" type="TextureButton" parent="."]
+margin_left = 926.0
+margin_right = 946.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = SubResource( 3 )
+expand = true
+stretch_mode = 5
+
+[connection signal="item_selected" from="OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="ButtonAddRef" to="." method="_on_ButtonAddRef_pressed"]
+[connection signal="pressed" from="ButtonShowAllRef" to="." method="_on_ButtonShowAllRef_pressed"]
+[connection signal="pressed" from="ButtonHideAllRef" to="." method="_on_ButtonHideAllRef_pressed"]
