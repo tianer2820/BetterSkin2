@@ -1,59 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/main_viewport/2d_panel/2DWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/main_viewport/2d_panel/2Dviewport_renderer.gd" type="Script" id=2]
 [ext_resource path="res://assets/main_viewport/2d_panel/2d_panel.gd" type="Script" id=3]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-# signals for viewport menu
-signal open_bg_menu
-signal open_ref_menu
-
-
-onready var camera = $Camera2D
-
-
-func _ready() -> void:
-	DocumentManager.connect(\"document_render_changed\", self, \"_update_render\")
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		event = event as InputEventMouseButton
-		if event.button_index == BUTTON_RIGHT:
-			# popup menu
-			get_tree().set_input_as_handled()
-			emit_signal(\"open_bg_menu\")
-
-
-
-func move_camera(delta: Vector2):
-	camera.position += delta * camera.zoom.x
-
-func scale_camera(factor: float):
-	camera.zoom *= factor
-
-func reset_camera():
-	camera.position = Vector2(0, 0)
-	camera.zoom = Vector2(0.2, 0.2)
-
-
-func _update_render():
-	var new_texture = ImageTexture.new()
-	new_texture.create_from_image(DocumentManager.rendered_skin, 0)
-	$\"2DSkinRect\".texture = new_texture
-
-
-# ref images
-func show_all_ref():
-	assert(false, \"unimplemented\")
-func hide_all_ref():
-	assert(false, \"unimplemented\")
-func add_ref(image: Image, pos: Vector2):
-	assert(false, \"unimplemented\")
-"
 
 [node name="2DPanel" type="Control"]
 margin_left = 415.0
@@ -82,7 +31,6 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="2DWorld" parent="ViewportRenderer/2DViewport" instance=ExtResource( 1 )]
-script = SubResource( 1 )
 
 [node name="BackgroundMenu" type="PopupMenu" parent="."]
 margin_left = 51.0
@@ -91,5 +39,4 @@ margin_right = 164.0
 margin_bottom = 54.0
 items = [ "Add Reference", null, 0, false, false, 0, 0, null, "", false, "Reset Canvas", null, 0, false, false, 1, 0, null, "", false ]
 
-[connection signal="open_bg_menu" from="ViewportRenderer/2DViewport/2DWorld" to="." method="_on_2DWorld_open_bg_menu"]
 [connection signal="id_pressed" from="BackgroundMenu" to="." method="_on_BackgroundMenu_id_pressed"]

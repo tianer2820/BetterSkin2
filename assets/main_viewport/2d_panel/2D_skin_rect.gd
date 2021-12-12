@@ -16,21 +16,36 @@ func _gui_input(event: InputEvent) -> void:
 		event = event as InputEventMouseButton
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:
-				# pressed
 				pressed = true
-				_draw_dot(false)
+				if event.control:
+					_pick_color()
+				else:
+					ToolManager.pen_down(get_local_mouse_position())
 			else:
 				# released
 				pressed = false
+				ToolManager.pen_up(get_local_mouse_position())
 	
 	elif event is InputEventMouseMotion:
-		event = event as InputEventMouseButton
+		event = event as InputEventMouseMotion
 		if pressed:
-			# continue draw
-			_draw_dot(true)
+			if event.control:
+				_pick_color()
+			else:
+				# continue draw
+				ToolManager.pen_move(get_local_mouse_position())
 
+func _pick_color():
+	var pos = get_local_mouse_position()
+	var img = DocumentManager.rendered_skin
+	img.lock()
+	var color = img.get_pixelv(pos)
+	img.unlock()
+	ToolManager.set_prime_color(color)
 
 func _draw_dot(link: bool):
+	var prime_color = ToolManager.get_prime_color()
+	
 	var pos = get_local_mouse_position()
 	var img = DocumentManager.active_document.get_layers()[0].image
 	img.lock()
@@ -42,16 +57,16 @@ func _draw_dot(link: bool):
 				var re_x = x * sign(line.x)
 				var y = 1 / line.aspect() * re_x
 				img.set_pixel(_last_dot.x + re_x,
-						_last_dot.y + y, Color(0, 0, 0))
+						_last_dot.y + y, prime_color)
 		else:
 			# steep
 			for y in range(int(abs(line.y)) + 1):
 				var re_y = y * sign(line.y)
 				var x = line.aspect() * re_y
 				img.set_pixel(_last_dot.x + x,
-						_last_dot.y + re_y, Color(0, 0, 0))
+						_last_dot.y + re_y, prime_color)
 	else:
-		img.set_pixel(pos.x, pos.y, Color(0, 0, 0))
+		img.set_pixel(pos.x, pos.y, prime_color)
 	img.unlock()
 
 #	texture = ImageTexture.new()

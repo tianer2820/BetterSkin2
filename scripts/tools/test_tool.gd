@@ -35,4 +35,4 @@ func _draw_pixel(uv):
 	img.lock()
 	img.set_pixelv(uv, ToolManager.get_prime_color())
 	img.unlock()
-	DocumentManager._document_modified()
+	DocumentManager.queue_render_skin()

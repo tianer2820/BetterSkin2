@@ -5,9 +5,10 @@ var _camera_facing = 0
 var _camera_pitch = 0
 
 onready var _cam_root = $CameraRoot
+onready var _camera = $CameraRoot/Camera
 
 func _ready() -> void:
-	DocumentManager.connect("document_render_changed", self, "_update_render")
+	DocumentManager.connect("document_rerendered", self, "_refresh_render")
 
 
 
@@ -26,12 +27,14 @@ func move_camera(delta: Vector2):
 
 
 func scale_camera(factor: float):
-#	camera.zoom *= factor
+	var new_fov = _camera.fov * factor
+	new_fov = clamp(new_fov, 20, 90)
+	_camera.fov = new_fov
 	pass
 
 
-func _update_render():
-	var mat = $MeshInstance.get_surface_material(0) as SpatialMaterial
+func _refresh_render():
+	var mat = $Ground.get_surface_material(0) as SpatialMaterial
 	
 	var tex = ImageTexture.new()
 	tex.create_from_image(DocumentManager.rendered_skin, 0)

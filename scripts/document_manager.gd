@@ -1,18 +1,27 @@
 extends Node
 
 
+signal document_rerendered
+
+
 var active_document: SkinDocument
 var buffer_layer: SkinLayer
 var rendered_skin: Image
 
-signal document_render_changed
+
+var _queue_render_skin: bool = true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# test code
 	active_document = SkinDocument.new(SkinDocument.TYPE_STEVE)
-	emit_signal("document_render_changed")
+
+func _process(delta: float) -> void:
+	if _queue_render_skin:
+		rendered_skin = SkinRenderer.render_skin_doc(active_document)
+		emit_signal("document_rerendered")
+		_queue_render_skin = false
 
 
 func create_new_skin():
@@ -37,11 +46,7 @@ func get_draw_layer() -> SkinLayer:
 	return active_document.get_active_layer()
 
 
-# should be called only by SkinDocument class
-# will update the render and send signal
-func _document_modified():
-	# update render
-	rendered_skin = SkinRenderer.render_skin_doc(active_document)
-#	rendered_skin = active_document.get_layers()[0].image
-	emit_signal("document_render_changed")
-
+# queue render skin on next frame. Must be called when skin is modified.
+func queue_render_skin():
+	_queue_render_skin = true
+	

@@ -1,52 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/main_viewport/3d_panel/3DWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/main_viewport/3d_panel/3d_panel.gd" type="Script" id=2]
 [ext_resource path="res://assets/main_viewport/3d_panel/3Dviewport_renderer.gd" type="Script" id=3]
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends Spatial
-
-
-var _camera_facing = 0
-var _camera_pitch = 0
-
-onready var _cam_root = $CameraRoot
-onready var _camera = $CameraRoot/Camera
-
-func _ready() -> void:
-	DocumentManager.connect(\"document_render_changed\", self, \"_update_render\")
-
-
-
-func move_camera(delta: Vector2):
-	_camera_facing += delta.x / 3
-	_camera_pitch += delta.y / 3
-	_camera_pitch = clamp(_camera_pitch, -90, 90)
-
-	
-	var trans = Basis(Vector3(1, 0, 0),
-			_camera_pitch / 180 * PI)
-	trans = trans.rotated(Vector3(0, 1, 0),
-			_camera_facing / 180 * PI)
-	trans = trans.scaled(_cam_root.transform.basis.get_scale())
-	_cam_root.transform.basis = trans
-
-
-func scale_camera(factor: float):
-	var new_fov = _camera.fov * factor
-	new_fov = clamp(new_fov, 20, 90)
-	_camera.fov = new_fov
-	pass
-
-
-func _update_render():
-	var mat = $Ground.get_surface_material(0) as SpatialMaterial
-	
-	var tex = ImageTexture.new()
-	tex.create_from_image(DocumentManager.rendered_skin, 0)
-	mat.albedo_texture = tex
-"
 
 [node name="3DPanel" type="Control"]
 margin_right = 403.0
@@ -72,7 +28,6 @@ render_target_update_mode = 3
 gui_disable_input = true
 
 [node name="3DWorld" parent="ViewportRenderer/3DViewport" instance=ExtResource( 1 )]
-script = SubResource( 3 )
 
 [node name="3DOverlay" type="PanelContainer" parent="."]
 modulate = Color( 1, 1, 1, 0.690196 )
