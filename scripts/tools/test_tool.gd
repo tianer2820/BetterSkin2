@@ -1,6 +1,8 @@
 extends ToolBase
 
 
+var _is_down = false
+
 func _init() -> void:
 	name = "Test Tool"
 	icon = load("res://scripts/tools/test_tool_icon.png")
@@ -23,11 +25,13 @@ func duplicate():
 func activate(active: bool):
 	pass
 func pen_down(uv: Vector2):
+	_is_down = true
 	_draw_pixel(uv)
 func pen_up(uv: Vector2):
-	pass
+	_is_down = false
 func pen_move(uv: Vector2):
-	_draw_pixel(uv)
+	if _is_down:
+		_draw_pixel(uv)
 
 func _draw_pixel(uv):
 	var layer = DocumentManager.get_draw_layer()
