@@ -32,8 +32,8 @@ func _ready() -> void:
 	for i in range(1):
 		var inst = test_tool.new()
 		_tool_list.append(inst)
-	emit_signal("tool_list_changed")
 	_check_active_tool_valid()
+	emit_signal("tool_list_changed")
 
 
 # manipulate tool list
@@ -41,13 +41,13 @@ func _ready() -> void:
 func add_tool(tool_obj):
 	assert(tool_obj is ToolBase, "tool_obj must be ToolBase")
 	_tool_list.append(tool_obj)
-	emit_signal("tool_list_changed")
 	_check_active_tool_valid()
+	emit_signal("tool_list_changed")
 
 func remove_tool(tool_obj):
 	_tool_list.erase(tool_obj)
-	emit_signal("tool_list_changed")
 	_check_active_tool_valid()
+	emit_signal("tool_list_changed")
 
 func get_tool_list() -> Array:
 	return _tool_list.duplicate()
@@ -61,7 +61,7 @@ func set_active_tool(tool_obj: ToolBase):
 	_do_set_active_tool(i)
 	
 func get_active_tool() -> ToolBase:
-	if _active_tool_index == -1:
+	if _active_tool_index == -1 or _active_tool_index >= _tool_list.size():
 		return null
 	return _tool_list[_active_tool_index]
 
@@ -79,9 +79,9 @@ func _do_set_active_tool(new_index):
 	if old_tool != null:
 		old_tool.activate(false)
 	_active_tool_index = new_index
-	emit_signal("active_tool_changed")
 	if(new_index != -1):
 		get_active_tool().activate(true)
+	emit_signal("active_tool_changed")
 
 # just to emit tool_modified signal.
 # Should only be called from ToolBase.
