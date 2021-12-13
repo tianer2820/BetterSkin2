@@ -29,9 +29,12 @@ func _ready() -> void:
 		# test code (load tools)
 	var test_tool = load(
 			"res://scripts/tools/test_tool.gd") as GDScript
-	for i in range(1):
-		var inst = test_tool.new()
-		_tool_list.append(inst)
+
+	var inst = test_tool.new()
+	_tool_list.append(inst)
+	
+	_tool_list.append(load("res://scripts/tools/dropper.gd").new())
+	
 	_check_active_tool_valid()
 	emit_signal("tool_list_changed")
 
