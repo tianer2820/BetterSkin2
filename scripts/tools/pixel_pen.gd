@@ -8,7 +8,7 @@ func _init() -> void:
 	tool_type = "pixel_pen"
 	tool_is_builtin = true
 	
-	tool_props = {
+	displayed_props = {
 		"brush_tip": brush_tip_prop(BrushTip.new()),
 	}
 	

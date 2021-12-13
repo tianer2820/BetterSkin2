@@ -14,8 +14,8 @@ variables that can be modified:
 		a string used to identify the class, format should be "class_name"
 	tool_is_builtin:
 		if true, the tool cannot be deleted from the ui
-	tool_props:
-		a Dictionary of ToolProp class, used to identify what properties need to be displaied on the editor
+	displayed_props:
+		ToolProp objects, that will be displayed on the ui
 
 must override functions:
 	draw related:
@@ -23,10 +23,6 @@ must override functions:
 		pen_down(uv: Vector2)
 		pen_up(uv: Vector2)
 		pen_move(uc: Vector2)
-
-	save and load state:
-		to_dict() -> Dictionary
-		load_dict(dict)
 	
 	other:
 		duplicate()
@@ -46,7 +42,7 @@ var tool_is_builtin: bool = true
 
 # define the displayed property list
 # does not hold actual value
-var tool_props: Dictionary
+var displayed_props: Dictionary
 
 # dict that actually hold property values
 var _properties: Dictionary = {}
@@ -59,8 +55,8 @@ func set_prop(prop_name, value) -> void:
 func get_prop(prop_name):
 	if prop_name in _properties:
 		return _properties[prop_name]
-	var param = tool_props[prop_name] as ToolProp
-	return param.value_default
+	var property = displayed_props[prop_name] as ToolProp
+	return property.value_default
 
 
 # draw related, must override
@@ -74,17 +70,6 @@ func pen_move(uv: Vector2):
 	assert(false, "unimplemented")
 
 
-# save and load state
-func to_dict() -> Dictionary:
-	assert(false, "unimplemented")
-	return {}
-func load_dict(dict):
-	assert(false, "unimplemented")
-
-
-
-
-
 func duplicate():
 	assert(false, "unimplemented")
 func copy(other):
@@ -92,11 +77,8 @@ func copy(other):
 	icon = other.icon
 	tool_type = other.tool_type
 	tool_is_builtin = other.tool_is_builtin
-	tool_props = other.tool_props.duplicate()
+	displayed_props = other.displayed_props.duplicate()
 	_properties = other._properties.duplicate()
-
-
-
 
 
 

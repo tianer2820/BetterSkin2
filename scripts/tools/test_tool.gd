@@ -10,7 +10,7 @@ func _init() -> void:
 	tool_type = "test_tool"
 	tool_is_builtin = true
 	
-	tool_props = {
+	displayed_props = {
 		"test_int": int_prop(3, 0, 6, 1),
 		"test_float": float_prop(1.234, -2, 2, 0.3),
 	}

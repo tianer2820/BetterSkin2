@@ -13,7 +13,7 @@ func _init() -> void:
 	tool_type = "unique_tool_identifier"
 	tool_is_builtin = true
 	
-	tool_props = {
+	displayed_props = {
 		"some_int": int_prop(0, 0, 100, 1),
 		"some_brush_tip": brush_tip_prop(BrushTip.new()),
 	}
@@ -34,13 +34,6 @@ func pen_up(uv: Vector2):
 func pen_move(uc: Vector2):
 	assert(false, "unimplemented")
 
-
-# save to dict
-func to_dict() -> Dictionary:
-	return {}
-# load from dict
-func load_dict(dict):
-	pass
 
 # create a deep copy of this instance
 func duplicate():

@@ -25,9 +25,9 @@ func _load_tool(tool_obj):
 		return
 	# add coorosponding panels and connect signals
 	_active_tool = tool_obj
-	var prop_names = _active_tool.tool_props.keys()
+	var prop_names = _active_tool.displayed_props.keys()
 	for p_name in prop_names:
-		var prop = _active_tool.tool_props[p_name]
+		var prop = _active_tool.displayed_props[p_name]
 		prop = prop as ToolProp
 		match prop.prop_type:
 			ToolProp.INTEGER:

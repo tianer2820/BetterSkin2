@@ -15,7 +15,7 @@ func _init() -> void:
 	tool_type = "dropper"
 	tool_is_builtin = true
 	
-	tool_props = {
+	displayed_props = {
 		"radius": int_prop(1, 1, 64, 1),
 	}
 
