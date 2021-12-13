@@ -1,6 +1,6 @@
 extends ViewportContainer
 
-# handle moving and scalling, passing event into viewport
+"""handle moving and scalling, passing event into viewport"""
 
 var is_dragging = false
 
