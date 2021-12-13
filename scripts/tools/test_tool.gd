@@ -3,7 +3,7 @@ extends ToolBase
 
 func _init() -> void:
 	name = "Test Tool"
-	icon = load("res://scripts/tools/pixel_pen_icon.tres")
+	icon = load("res://scripts/tools/test_tool_icon.png")
 	
 	tool_type = "test_tool"
 	tool_labels = ['builtin']
