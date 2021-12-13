@@ -1,5 +1,10 @@
 extends HBoxContainer
 
+"""
+This script provides the color picker interface
+"""
+
+
 signal pick_color(new_color)
 
 

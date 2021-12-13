@@ -293,28 +293,28 @@ __meta__ = {
 [node name="SettingsSplit" type="VSplitContainer" parent="VBox/MainSplit"]
 margin_right = 310.0
 margin_bottom = 482.0
-split_offset = 148
+split_offset = 40
 
 [node name="ColorSelector" parent="VBox/MainSplit/SettingsSplit" instance=ExtResource( 6 )]
 margin_right = 310.0
-margin_bottom = 380.0
+margin_bottom = 272.0
 
 [node name="ToolSplit" type="VSplitContainer" parent="VBox/MainSplit/SettingsSplit"]
-margin_top = 392.0
+margin_top = 284.0
 margin_right = 310.0
 margin_bottom = 482.0
-split_offset = 90
+split_offset = 70
 
 [node name="ToolSelector" parent="VBox/MainSplit/SettingsSplit/ToolSplit" instance=ExtResource( 7 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 310.0
-margin_bottom = 46.0
+margin_bottom = 108.0
 
 [node name="ToolSettingsPanel" parent="VBox/MainSplit/SettingsSplit/ToolSplit" instance=ExtResource( 4 )]
-margin_top = 58.0
+margin_top = 120.0
 margin_right = 310.0
-margin_bottom = 90.0
+margin_bottom = 198.0
 
 [node name="MainViewport" parent="VBox/MainSplit" instance=ExtResource( 5 )]
 anchor_right = 0.0

@@ -12,8 +12,8 @@ region = Rect2( 15, 10, 5, 5 )
 [node name="HBoxContainer" type="HBoxContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 146.0
-margin_bottom = 137.0
+margin_right = 122.0
+margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 4 )
@@ -22,16 +22,16 @@ __meta__ = {
 }
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-margin_right = 119.0
-margin_bottom = 130.0
+margin_right = 95.0
+margin_bottom = 97.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ColorCircle" type="ColorRect" parent="AspectRatioContainer"]
 material = ExtResource( 2 )
-margin_top = 5.5
-margin_right = 119.0
-margin_bottom = 124.5
+margin_top = 1.0
+margin_right = 95.0
+margin_bottom = 96.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -61,9 +61,9 @@ __meta__ = {
 }
 
 [node name="VSlider" type="VSlider" parent="."]
-margin_left = 123.0
-margin_right = 139.0
-margin_bottom = 130.0
+margin_left = 99.0
+margin_right = 115.0
+margin_bottom = 97.0
 step = 0.0
 value = 100.0
 

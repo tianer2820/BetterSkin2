@@ -4,13 +4,12 @@ extends ColorRect
 signal pick_color(new_color)
 
 
+export var cursor_ratio: float = 0.1
+
+
 var picker_color: Color setget _set_picker_color
 
 var _mouse_pressed = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -35,7 +34,7 @@ func _gui_input(event: InputEvent) -> void:
 			emit_signal("pick_color", _pick_color())
 			
 
-
+# pick the color under mouse pointer
 func _pick_color():
 	var size = rect_size
 	var pos = get_local_mouse_position()
@@ -51,8 +50,12 @@ func _pick_color():
 	_update_cursor()
 	return picker_color
 
-
+# relocate and rescale the picker cursor
 func _update_cursor():
+	# update size
+	$Cursor.rect_size = rect_size * cursor_ratio
+	
+	# update position
 	var vec_from_center = Vector2(picker_color.s / 2, 0)
 	vec_from_center = vec_from_center.rotated(picker_color.h * TAU)
 	vec_from_center.y *= -1
@@ -72,8 +75,7 @@ func _set_picker_color(new_color):
 
 
 func _on_ColorCircle_item_rect_changed() -> void:
-	$Cursor.rect_size = rect_size * 0.1
-
+	_update_cursor()
 
 func _on_ColorCircle_resized() -> void:
 	_update_cursor()
