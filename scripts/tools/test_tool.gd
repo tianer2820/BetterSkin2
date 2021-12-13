@@ -6,7 +6,7 @@ func _init() -> void:
 	icon = load("res://scripts/tools/test_tool_icon.png")
 	
 	tool_type = "test_tool"
-	tool_labels = ['builtin']
+	tool_is_builtin = true
 	
 	tool_props = {
 		"test_int": int_prop(3, 0, 6, 1),

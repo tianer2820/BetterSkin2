@@ -12,8 +12,8 @@ variables that can be modified:
 		a texture type to be displayed
 	tool_type:
 		a string used to identify the class, format should be "class_name"
-	tool_labels:
-		weither "builtin" or "user-defined"
+	tool_is_builtin:
+		if true, the tool cannot be deleted from the ui
 	tool_props:
 		a Dictionary of ToolProp class, used to identify what properties need to be displaied on the editor
 
@@ -42,7 +42,7 @@ var icon: Texture
 # tool type str used to identify tool class when saving and loading
 var tool_type: String
 # labels for tool grouping, ie builtin or user-defined
-var tool_labels: Array
+var tool_is_builtin: bool = true
 
 # define the displayed property list
 # does not hold actual value
@@ -91,7 +91,7 @@ func copy(other):
 	name = other.name
 	icon = other.icon
 	tool_type = other.tool_type
-	tool_labels = other.tool_labels.duplicate()
+	tool_is_builtin = other.tool_is_builtin
 	tool_props = other.tool_props.duplicate()
 	_properties = other._properties.duplicate()
 

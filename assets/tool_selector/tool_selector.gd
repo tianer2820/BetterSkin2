@@ -69,7 +69,7 @@ func _on_ItemList_item_selected(index: int) -> void:
 func _on_ItemList_item_rmb_selected(index: int, at_position: Vector2) -> void:
 	var global_pos = get_global_mouse_position()
 	var active_tool = get_active_tool()
-	if "builtin" in active_tool.tool_labels:
+	if active_tool.tool_is_builtin:
 		$VBox/ItemList/PopupMenu.set_item_disabled(1, true)
 		$VBox/ItemList/PopupMenu.set_item_disabled(2, true)
 	else:
@@ -105,7 +105,7 @@ func _on_PopupMenu_id_pressed(id: int) -> void:
 				# do duplicate
 				var dup_tool = active_tool.duplicate()
 				dup_tool.name = text
-				dup_tool.tool_labels = ["user"]
+				dup_tool.tool_is_builtin = false
 				ToolManager.add_tool(dup_tool)
 		1:
 			# delete
