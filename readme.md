@@ -40,7 +40,19 @@ Contributions are welcomed after V1.0 is out, after the main architecture is fix
 
 
 ## TODOs
+### Complex
 - split quick tool module out from tool manager. Add sysmatic way to register tools & shortcuts
-- add pen buffer layer, apply buffer method, and pen indicator layer to document manager
+- implement document open & save menu
+- implement undo redo
+- reimplement color picker signal structure to match other parts of the program
+
+### Middle
 - add constant helper class to keep all string constants
+- add pen buffer layer, apply buffer method, and pen indicator layer to document manager
 - put 3D model in
+
+### Simple
+- new icon
+- new theme
+- implement HSV color selector
+- implement color mixer
