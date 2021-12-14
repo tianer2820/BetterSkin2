@@ -81,6 +81,31 @@ func copy(other):
 	_properties = other._properties.duplicate()
 
 
+# save & loading
+func to_dict() -> Dictionary:
+	var save_properties = _properties.duplicate()
+	for key in save_properties.keys():
+		var value = save_properties[key]
+		if value is BrushTip:
+			save_properties[key] = value.to_dict()
+	var save_dict = {
+		'name': name,
+		'tool_type': tool_type,
+		'properties': save_properties,
+	}
+	return save_dict
+func load_dict(dict: Dictionary):
+	name = dict['name']
+	tool_type = dict['tool_type']
+	_properties = dict['properties']
+	for key in _properties.keys():
+		var value = _properties[key]
+		if value is Dictionary: # special object
+			if value['type'] == 'brush_tip':
+				var brush_tip = BrushTip.new()
+				brush_tip.load_dict(value)
+				_properties[key] = brush_tip
+
 
 # convenience functions for building property list
 

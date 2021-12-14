@@ -41,6 +41,5 @@ Contributions are welcomed after V1.0 is out, after the main architecture is fix
 
 ## TODOs
 
-- remove individual tool to dict methods, auto save the property dictionary instead.
 - switch to the dropper tool when ctrl is pressed, instead of picking color in canvas widget
 - add pen buffer layer, apply buffer method, and pen indicator layer to document manager
