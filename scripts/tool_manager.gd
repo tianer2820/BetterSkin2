@@ -25,18 +25,40 @@ var _active_tool_index = -1
 var _prime_color: Color = Color(1, 1, 1)
 
 
+# quick tool states
+var _switch_back_tool: ToolBase = null
+
+# static tool objects
+var TOOL_TEST: ToolBase
+var TOOL_DROPPER: ToolBase
+
+
 func _ready() -> void:
-		# test code (load tools)
+	
 	var test_tool = load(
 			"res://scripts/tools/test_tool.gd") as GDScript
-
-	var inst = test_tool.new()
-	_tool_list.append(inst)
+	TOOL_TEST = test_tool.new()
+	_tool_list.append(TOOL_TEST)
 	
-	_tool_list.append(load("res://scripts/tools/dropper.gd").new())
+	TOOL_DROPPER = load("res://scripts/tools/dropper.gd").new()
+	_tool_list.append(TOOL_DROPPER)
 	
 	_check_active_tool_valid()
 	emit_signal("tool_list_changed")
+
+
+func _process(delta: float) -> void:
+	# check input, quick switch shortcut
+	if Input.is_action_just_pressed("quick_tool_dropper"):
+		if _switch_back_tool == null:
+			_switch_back_tool = get_active_tool()
+			set_active_tool(TOOL_DROPPER)
+	
+	if _switch_back_tool != null: # in quick tool mode
+		if Input.is_action_just_released("quick_tool_dropper"):
+			if get_active_tool() == TOOL_DROPPER:
+				set_active_tool(_switch_back_tool)
+				_switch_back_tool = null
 
 
 # manipulate tool list
