@@ -43,3 +43,5 @@ Contributions are welcomed after V1.0 is out, after the main architecture is fix
 
 - switch to the dropper tool when ctrl is pressed, instead of picking color in canvas widget
 - add pen buffer layer, apply buffer method, and pen indicator layer to document manager
+- add constant helper class to keep all string constants
+- put 3D model in
