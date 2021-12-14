@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/gui_root.gd" type="Script" id=1]
 [ext_resource path="res://arts/icons.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/main_viewport/main_viewport.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/main_color_selector/main_color_selector.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/tool_selector/tool_selector.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/menu_bar/menu_bar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 3.0
@@ -53,69 +54,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuBar" type="HBoxContainer" parent="VBox"]
-margin_right = 954.0
-margin_bottom = 20.0
-
-[node name="FileButton" type="MenuButton" parent="VBox/MenuBar"]
-margin_right = 35.0
-margin_bottom = 20.0
-text = "File"
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-switch_on_hover = true
-
-[node name="EditButton" type="MenuButton" parent="VBox/MenuBar"]
-margin_left = 39.0
-margin_right = 75.0
-margin_bottom = 20.0
-focus_mode = 2
-text = "Edit"
-switch_on_hover = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SelectButton" type="MenuButton" parent="VBox/MenuBar"]
-margin_left = 79.0
-margin_right = 130.0
-margin_bottom = 20.0
-focus_mode = 2
-text = "Select"
-switch_on_hover = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LayerButton" type="MenuButton" parent="VBox/MenuBar"]
-margin_left = 134.0
-margin_right = 180.0
-margin_bottom = 20.0
-text = "Layer"
-switch_on_hover = true
-
-[node name="ToolsButton" type="MenuButton" parent="VBox/MenuBar"]
-margin_left = 184.0
-margin_right = 230.0
-margin_bottom = 20.0
-focus_mode = 2
-text = "Tools"
-switch_on_hover = true
-
-[node name="SettingsButton" type="MenuButton" parent="VBox/MenuBar"]
-margin_left = 234.0
-margin_right = 297.0
-margin_bottom = 20.0
-focus_mode = 2
-text = "Settings"
-switch_on_hover = true
-
-[node name="HelpButton" type="MenuButton" parent="VBox/MenuBar"]
-margin_left = 301.0
-margin_right = 343.0
-margin_bottom = 20.0
-focus_mode = 2
-text = "Help"
-switch_on_hover = true
+[node name="MenuBar" parent="VBox" instance=ExtResource( 8 )]
 
 [node name="ConvenientBar" type="HBoxContainer" parent="VBox"]
 margin_top = 24.0
@@ -322,5 +261,21 @@ anchor_bottom = 0.0
 margin_left = 322.0
 margin_right = 954.0
 margin_bottom = 482.0
+
+[node name="GlobalDialogs" type="Control" parent="."]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 957.0
+margin_bottom = 537.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NewDocumentDialog" type="WindowDialog" parent="GlobalDialogs"]
+margin_left = 161.0
+margin_top = 77.0
+margin_right = 568.0
+margin_bottom = 410.0
 
 [connection signal="pick_color" from="VBox/MainSplit/SettingsSplit/ColorSelector" to="." method="_on_ColorSelector_pick_color"]

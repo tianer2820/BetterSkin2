@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/menu_bar/menu_bar.gd" type="Script" id=1]
+
+[node name="MenuBar" type="HBoxContainer"]
+margin_right = 954.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileButton" type="MenuButton" parent="."]
+margin_right = 35.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "File"
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+switch_on_hover = true
+
+[node name="EditButton" type="MenuButton" parent="."]
+margin_left = 39.0
+margin_right = 75.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Edit"
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectButton" type="MenuButton" parent="."]
+margin_left = 79.0
+margin_right = 130.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Select"
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayerButton" type="MenuButton" parent="."]
+margin_left = 134.0
+margin_right = 180.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Layer"
+switch_on_hover = true
+
+[node name="ToolsButton" type="MenuButton" parent="."]
+margin_left = 184.0
+margin_right = 230.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Tools"
+switch_on_hover = true
+
+[node name="SettingsButton" type="MenuButton" parent="."]
+margin_left = 234.0
+margin_right = 297.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Settings"
+switch_on_hover = true
+
+[node name="HelpButton" type="MenuButton" parent="."]
+margin_left = 301.0
+margin_right = 343.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "Help"
+switch_on_hover = true

@@ -8,7 +8,7 @@ onready var _cam_root = $CameraRoot
 onready var _camera = $CameraRoot/Camera
 
 func _ready() -> void:
-	DocumentManager.connect("document_rerendered", self, "_refresh_render")
+	DocumentManager.connect("skin_rerendered", self, "_refresh_render")
 
 
 

@@ -9,7 +9,7 @@ onready var camera = $Camera2D
 
 
 func _ready() -> void:
-	DocumentManager.connect("document_rerendered", self, "_refresh_render")
+	DocumentManager.connect("skin_rerendered", self, "_refresh_render")
 
 
 func _unhandled_input(event: InputEvent) -> void:
