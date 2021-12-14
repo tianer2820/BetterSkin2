@@ -273,9 +273,92 @@ __meta__ = {
 }
 
 [node name="NewDocumentDialog" type="WindowDialog" parent="GlobalDialogs"]
-margin_left = 161.0
-margin_top = 77.0
-margin_right = 568.0
-margin_bottom = 410.0
+visible = true
+margin_left = 285.0
+margin_top = 98.0
+margin_right = 692.0
+margin_bottom = 431.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="GlobalDialogs/NewDocumentDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="GlobalDialogs/NewDocumentDialog/VBox"]
+margin_right = 377.0
+margin_bottom = 14.0
+text = "New Skin"
+align = 1
+
+[node name="GBox" type="GridContainer" parent="GlobalDialogs/NewDocumentDialog/VBox"]
+margin_top = 24.0
+margin_right = 377.0
+margin_bottom = 273.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label1" type="Label" parent="GlobalDialogs/NewDocumentDialog/VBox/GBox"]
+margin_top = 3.0
+margin_right = 68.0
+margin_bottom = 17.0
+text = "Skin type:"
+
+[node name="OptionSkinType" type="OptionButton" parent="GlobalDialogs/NewDocumentDialog/VBox/GBox"]
+margin_left = 72.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Steve"
+items = [ "Steve", null, false, 0, null, "Alex", null, false, 1, null ]
+selected = 0
+
+[node name="Label2" type="Label" parent="GlobalDialogs/NewDocumentDialog/VBox/GBox"]
+margin_top = 27.0
+margin_right = 68.0
+margin_bottom = 41.0
+text = "Resolution"
+
+[node name="OptionResolution" type="OptionButton" parent="GlobalDialogs/NewDocumentDialog/VBox/GBox"]
+margin_left = 72.0
+margin_top = 24.0
+margin_right = 377.0
+margin_bottom = 44.0
+text = "64x64"
+items = [ "64x64", null, false, 0, null, "128x128", null, false, 1, null, "256x256", null, false, 2, null ]
+selected = 0
+
+[node name="HBox" type="HBoxContainer" parent="GlobalDialogs/NewDocumentDialog/VBox"]
+margin_top = 283.0
+margin_right = 377.0
+margin_bottom = 303.0
+size_flags_horizontal = 5
+custom_constants/separation = 10
+
+[node name="ButtonCreate" type="Button" parent="GlobalDialogs/NewDocumentDialog/VBox/HBox"]
+margin_right = 183.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Create"
+
+[node name="ButtonCancel" type="Button" parent="GlobalDialogs/NewDocumentDialog/VBox/HBox"]
+margin_left = 193.0
+margin_right = 377.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Cancel"
 
 [connection signal="pick_color" from="VBox/MainSplit/SettingsSplit/ColorSelector" to="." method="_on_ColorSelector_pick_color"]
