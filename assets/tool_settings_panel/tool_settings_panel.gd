@@ -16,6 +16,7 @@ func _ready() -> void:
 			self, "_on_active_tool_changed")
 	ToolManager.connect("tool_modified",
 			self, "_on_manager_tool_modified")
+	_load_tool(ToolManager.get_active_tool())
 
 # load the tool to be displayed
 func _load_tool(tool_obj):
