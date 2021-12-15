@@ -25,8 +25,6 @@ var _active_tool_index = -1
 var _prime_color: Color = Color(1, 1, 1)
 
 
-# quick tool states
-var _switch_back_tool: ToolBase = null
 
 # static tool objects
 var TOOL_TEST: ToolBase
@@ -45,20 +43,11 @@ func _ready() -> void:
 	
 	_check_active_tool_valid()
 	emit_signal("tool_list_changed")
-
-
-func _process(delta: float) -> void:
-	# check input, quick switch shortcut
-	if Input.is_action_just_pressed("quick_tool_dropper"):
-		if _switch_back_tool == null:
-			_switch_back_tool = get_active_tool()
-			set_active_tool(TOOL_DROPPER)
 	
-	if _switch_back_tool != null: # in quick tool mode
-		if Input.is_action_just_released("quick_tool_dropper"):
-			if get_active_tool() == TOOL_DROPPER:
-				set_active_tool(_switch_back_tool)
-				_switch_back_tool = null
+	
+	# register quick tool
+	QuickToolManager.register_quick_tool("quick_tool_dropper", TOOL_DROPPER)
+
 
 
 # manipulate tool list

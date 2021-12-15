@@ -41,7 +41,6 @@ Contributions are welcomed after V1.0 is out, after the main architecture is fix
 
 ## TODOs
 ### Complex
-- split quick tool module out from tool manager. Add sysmatic way to register tools & shortcuts
 - implement document open & save menu
 - implement undo redo
 - reimplement color picker signal structure to match other parts of the program
@@ -56,3 +55,5 @@ Contributions are welcomed after V1.0 is out, after the main architecture is fix
 - new theme
 - implement HSV color selector
 - implement color mixer
+- add eraser tool
+- add pen tool
