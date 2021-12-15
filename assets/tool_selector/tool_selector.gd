@@ -117,7 +117,7 @@ func _on_PopupMenu_id_pressed(id: int) -> void:
 						active_tool.name), "completed")
 			if text != "":
 				active_tool.name = text
-				ToolManager._tool_is_modified(active_tool)
+				ToolManager.announce_tool_modified(active_tool)
 				
 
 

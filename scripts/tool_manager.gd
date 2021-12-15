@@ -99,7 +99,7 @@ func _do_set_active_tool(new_index):
 
 # just to emit tool_modified signal.
 # Should only be called from ToolBase.
-func _tool_is_modified(modified_tool):
+func announce_tool_modified(modified_tool):
 	emit_signal("tool_modified", modified_tool)
 
 

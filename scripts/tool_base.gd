@@ -50,7 +50,7 @@ var _properties: Dictionary = {}
 
 func set_prop(prop_name, value) -> void:
 	_properties[prop_name] = value
-	ToolManager._tool_is_modified(self)
+	ToolManager.announce_tool_modified(self)
 
 func get_prop(prop_name):
 	if prop_name in _properties:
