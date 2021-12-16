@@ -40,15 +40,18 @@ Contributions are welcomed after V1.0 is out, after the main architecture is fix
 
 
 ## TODOs
+Below are some current todo list. Begin with some simple ones to become familiar with the project.
+
 ### Complex
 - implement document open & save menu
 - implement undo redo
-- reimplement color picker signal structure to match other parts of the program
+- add pen buffer layer and pen indicator layer, reimplement render functions
 
 ### Middle
 - add constant helper class to keep all string constants
-- add pen buffer layer, apply buffer method, and pen indicator layer to document manager
+- reimplement color picker signal structure to match other parts of the program
 - put 3D model in
+- implement all tool properties panels
 
 ### Simple
 - new icon
