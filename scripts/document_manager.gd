@@ -19,6 +19,9 @@ The tool_indecator layer are used to preview the effective range of the tool, i.
 
 # the skin render changed and all display should refresh
 signal skin_rerendered
+# layer change notifications
+signal active_layer_changed
+signal layers_changed
 
 # currently opened document
 var active_skin: SkinDocument setget _set_active_skin
@@ -79,6 +82,7 @@ func _set_active_layer_index(new_value):
 	assert(new_value >= 0 and new_value < active_skin.layers.size(),
 			"invalid index value")
 	active_layer_index = new_value
+	emit_signal("active_layer_changed")
 
 func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	assert(new_layer != null, "new layer cannot be null")
@@ -88,6 +92,7 @@ func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	active_skin.layers.insert(at_index, new_layer)
 	if at_index <= active_layer_index:
 		active_layer_index += 1
+	emit_signal("layers_changed")
 
 func pop_layer(at_index: int = 0) -> SkinLayer:
 	assert(at_index >= 0 and at_index < active_skin.layers.size(),
@@ -96,7 +101,7 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 	if at_index <= active_layer_index:
 		active_layer_index -= 1
 	return ret
-
+	emit_signal("layers_changed")
 
 # queue render skin on next frame. Must be called when skin is modified.
 func queue_render_skin():
