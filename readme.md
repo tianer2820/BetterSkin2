@@ -50,8 +50,8 @@ Below are some current todo list. Begin with some simple ones to become familiar
 ### Middle
 - add constant helper class to keep all string constants
 - reimplement color picker signal structure to match other parts of the program
-- put 3D model in
 - implement all tool properties panels
+- implement 3D to UV mapping, 3D viewport pen input
 
 ### Simple
 - new icon

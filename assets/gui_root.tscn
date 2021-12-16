@@ -273,7 +273,6 @@ __meta__ = {
 }
 
 [node name="NewDocumentDialog" type="WindowDialog" parent="GlobalDialogs"]
-visible = true
 margin_left = 285.0
 margin_top = 98.0
 margin_right = 692.0

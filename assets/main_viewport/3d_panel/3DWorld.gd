@@ -7,6 +7,8 @@ var _camera_pitch = 0
 onready var _cam_root = $CameraRoot
 onready var _camera = $CameraRoot/Camera
 
+var material = preload("res://assets/main_viewport/3d_panel/model/Skin.material")
+
 func _ready() -> void:
 	DocumentManager.connect("skin_rerendered", self, "_refresh_render")
 
@@ -34,7 +36,8 @@ func scale_camera(factor: float):
 
 
 func _refresh_render():
-	var mat = $Ground.get_surface_material(0) as SpatialMaterial
+#	var mat = $Ground.get_surface_material(0) as SpatialMaterial
+	var mat = material
 	
 	var tex = ImageTexture.new()
 	tex.create_from_image(DocumentManager.rendered_skin, 0)
