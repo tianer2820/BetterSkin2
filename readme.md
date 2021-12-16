@@ -60,3 +60,4 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - implement color mixer
 - add eraser tool
 - add pen tool
+- rewrite program interface to match the style of the DocumentManager

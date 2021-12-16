@@ -7,7 +7,7 @@ the skin data class
 holds skin layers, file name, formats.
 Just a data class, rendering and modification are done by SkinRenderer and document manager
 
-Tools should not modify this directly. All modificatioin should be done through DocumentManager.
+Tools should not modify this directly. All modificatioin should be done through DocumentManager
 """
 
 enum{
