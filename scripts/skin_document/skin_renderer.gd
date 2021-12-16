@@ -2,7 +2,7 @@ extends Node
 
 
 static func render_skin_doc(skin_doc: SkinDocument):
-	var layers = skin_doc.get_layers()
+	var layers = skin_doc.layers
 	var resolution = skin_doc.skin_resolution
 	var final_img = Image.new()
 	final_img.create(resolution, resolution, false, Image.FORMAT_RGBA8)

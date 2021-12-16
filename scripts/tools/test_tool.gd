@@ -34,7 +34,7 @@ func pen_move(uv: Vector2):
 		_draw_pixel(uv)
 
 func _draw_pixel(uv):
-	var layer = DocumentManager.get_draw_layer()
+	var layer = DocumentManager.active_layer
 	var img = layer.image
 	img.lock()
 	img.set_pixelv(uv, ToolManager.get_prime_color())

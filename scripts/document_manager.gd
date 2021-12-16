@@ -1,46 +1,101 @@
 extends Node
 
 
+"""
+Document manager holds the current opened skin document and manage the rendering, modification and undo/redo operations.
+
+There are three different type of draw targets available:
+	layers in the skin document
+	the tool_indecator layer
+	the draw_buffer layer
+
+layers in the skin document should not be modified by tools directly, as undo/redo cannot be correctly managed in this way. 
+
+Tools should draw on the draw_buffer layer instead, and let document manager to merge down that layer instead.
+
+The tool_indecator layer are used to preview the effective range of the tool, i.e. brush size, shape indecator. It should be cleared and redrew when the mouse pointer moves.
+
+"""
+
+# the skin render changed and all display should refresh
 signal skin_rerendered
 
-
+# currently opened document
 var active_skin: SkinDocument setget _set_active_skin
-var buffer_layer: SkinLayer setget _read_only
+var active_layer: SkinLayer setget _set_active_layer, _get_active_layer
+var active_layer_index: int = -1 setget _set_active_layer_index
+# tooling layers
+var draw_buffer_layer: SkinLayer setget _read_only
+var tool_indecator_layer: SkinLayer setget _read_only
+# the image that should be displaied on canvas
 var rendered_skin: Image setget _read_only
 
 
+# do skin need to be rendered on next frame
 var _queue_render_skin: bool = true
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# test code
 	active_skin = SkinDocument.new(SkinDocument.TYPE_STEVE)
+	active_layer_index = 0
 
 func _process(delta: float) -> void:
-	# render skin each frame if needed
+	# render skin if needed
 	if _queue_render_skin:
 		rendered_skin = SkinRenderer.render_skin_doc(active_skin)
 		emit_signal("skin_rerendered")
 		_queue_render_skin = false
 
 
+# popup window to create a new skin
 func ask_create_new_skin():
 	pass
-# load skin doc from file
-func ask_load_skin():
+# popup window to browse and open a skin file
+func ask_open_skin():
 	pass
-# save skin doc to file
+# popup window to save skin to a file
 func ask_save_skin(save_as=false):
 	pass
 
 
-# open a loaded skin document
+# load a new skin (currently invalid)
 func _set_active_skin(doc):
 	_read_only(doc)
 
-func get_draw_layer() -> SkinLayer:
-	return active_skin.get_active_layer()
+func _set_active_layer(new_value: SkinLayer):
+	var index = active_skin.layers.find(new_value)
+	assert(index != -1, "layer not in active skin")
+	self.active_layer_index = index
+
+func _get_active_layer() -> SkinLayer:
+	if(active_skin == null):
+		return null
+	if(active_layer_index < 0):
+		return null
+	return active_skin.layers[active_layer_index]
+
+func _set_active_layer_index(new_value):
+	assert(new_value >= 0 and new_value < active_skin.layers.size(),
+			"invalid index value")
+	active_layer_index = new_value
+
+func add_layer(new_layer: SkinLayer, at_index: int = 0):
+	assert(new_layer != null, "new layer cannot be null")
+	assert(not new_layer in active_skin.layers,
+			"new layer already in layer list")
+	at_index = clamp(at_index, 0, active_skin.layers.size())
+	active_skin.layers.insert(at_index, new_layer)
+	if at_index <= active_layer_index:
+		active_layer_index += 1
+
+func pop_layer(at_index: int = 0) -> SkinLayer:
+	assert(at_index >= 0 and at_index < active_skin.layers.size(),
+			"index out of range")
+	var ret = active_skin.layers.pop_at(at_index)
+	if at_index <= active_layer_index:
+		active_layer_index -= 1
+	return ret
 
 
 # queue render skin on next frame. Must be called when skin is modified.
