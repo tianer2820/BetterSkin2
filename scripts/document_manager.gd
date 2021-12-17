@@ -42,11 +42,16 @@ func _ready() -> void:
 	# test code
 	active_skin = SkinDocument.new(SkinDocument.TYPE_STEVE)
 	active_layer_index = 0
+	tool_indecator_layer = SkinLayer.new("tool_indecator",
+			Vector2(active_skin.resolution, active_skin.resolution))
+	draw_buffer_layer = SkinLayer.new("draw_buffer",
+			Vector2(active_skin.resolution, active_skin.resolution))
+
 
 func _process(delta: float) -> void:
 	# render skin if needed
 	if _queue_render_skin:
-		rendered_skin = SkinRenderer.render_skin_doc(active_skin)
+		rendered_skin = SkinRenderer.render_skin_preview()
 		emit_signal("skin_rerendered")
 		_queue_render_skin = false
 
@@ -82,6 +87,8 @@ func _set_active_layer_index(new_value):
 	assert(new_value >= 0 and new_value < active_skin.layers.size(),
 			"invalid index value")
 	active_layer_index = new_value
+	var new_res = self.active_layer.image.get_size()
+	draw_buffer_layer = SkinLayer.new("draw_buffer", new_res)
 	emit_signal("active_layer_changed")
 
 func add_layer(new_layer: SkinLayer, at_index: int = 0):

@@ -16,17 +16,17 @@ enum{
 
 
 var skin_type = TYPE_STEVE
-var skin_resolution = 64
+var resolution = 64
 
 """lower layers will be rendered on top of upper ones.
 UI should display it in the reverse order"""
 var layers: Array = []
 
 
-func _init(type, resolution: int = 64) -> void:
+func _init(type, res: int = 64) -> void:
 	skin_type = type
 	
-	skin_resolution = resolution
+	resolution = res
 	var new_layer = SkinLayer.new("Base",
 			Vector2(resolution, resolution))
 	layers.append(new_layer)
