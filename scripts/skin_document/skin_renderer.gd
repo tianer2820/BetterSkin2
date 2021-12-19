@@ -55,6 +55,13 @@ static func render_skin_preview() -> Image:
 			Vector2(0, 0))
 	return final_img
 
+# merge upper layer to lower layer, lower layer is modified in place
+static func merge_layers(upper: SkinLayer, lower: SkinLayer):
+	var size: Vector2 = lower.image.get_size()
+	var overlay = _pixel_resize(upper.image, size)
+	lower.image.blend_rect(overlay,
+			Rect2(0, 0, size.x, size.y),
+			Vector2(0, 0))
 
 static func _pixel_resize(img: Image, target_size: Vector2) -> Image:
 	var new_img = Image.new()

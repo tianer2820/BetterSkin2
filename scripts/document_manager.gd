@@ -110,6 +110,12 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 	return ret
 	emit_signal("layers_changed")
 
+
+# apply the current draw buffer layer, create undo/redo actions
+func apply_draw_buffer():
+	SkinRenderer.merge_layers(self.draw_buffer_layer, self.active_layer)
+	print_debug("add undo/redo action here")
+
 # queue render skin on next frame. Must be called when skin is modified.
 func queue_render_skin():
 	_queue_render_skin = true

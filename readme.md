@@ -44,7 +44,6 @@ Below are some current todo list. Begin with some simple ones to become familiar
 
 ### Complex
 - implement document open & save menu
-- implement merge down draw buffer function
 - implement undo redo
 - add pen buffer layer and pen indicator layer, reimplement render functions
 

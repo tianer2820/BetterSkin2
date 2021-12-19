@@ -13,3 +13,11 @@ func _init(name: String, size: Vector2) -> void:
 	image = Image.new()
 	image.create(size.x, size.y, false, Image.FORMAT_RGBA8)
 	image.fill(Color(0, 0, 0, 0))
+
+
+func duplicate():
+	var skin_layer_class = load("res://scripts/skin_document/skin_layer.gd")
+	var dup = skin_layer_class.new(name, image.get_size())
+	dup.alpha = alpha
+	dup.image.copy_from(image)
+	return dup
