@@ -33,6 +33,8 @@ var tool_indecator_layer: SkinLayer setget _read_only
 # the image that should be displaied on canvas
 var rendered_skin: Image setget _read_only
 
+var selection_mask: Image setget _read_only
+
 
 # do skin need to be rendered on next frame
 var _queue_render_skin: bool = true
@@ -46,6 +48,8 @@ func _ready() -> void:
 			Vector2(active_skin.resolution, active_skin.resolution))
 	draw_buffer_layer = SkinLayer.new("draw_buffer",
 			Vector2(active_skin.resolution, active_skin.resolution))
+	selection_mask = Image.new()
+	selection_mask.create(active_skin.resolution, active_skin.resolution, false, Image.FORMAT_RGBA8)
 
 
 func _process(delta: float) -> void:

@@ -52,6 +52,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - reimplement color picker signal structure to match other parts of the program
 - implement all tool properties panels
 - implement 3D to UV mapping, 3D viewport pen input
+- add support for replace layer mode, for adding tools like move or eraser, so layer buffer can be used either as a alpha over or as a replacement
 
 ### Simple
 - new icon
