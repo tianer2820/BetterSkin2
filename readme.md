@@ -48,7 +48,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - add pen buffer layer and pen indicator layer, reimplement render functions
 
 ### Middle
-- add constant helper class to keep all string constants
+- move all constants to CST class
 - reimplement color picker signal structure to match other parts of the program
 - implement all tool properties panels
 - implement 3D to UV mapping, 3D viewport pen input

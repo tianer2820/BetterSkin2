@@ -15,7 +15,6 @@ margin_right = 35.0
 margin_bottom = 20.0
 focus_mode = 2
 text = "File"
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Open", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
 switch_on_hover = true
 
 [node name="EditButton" type="MenuButton" parent="."]

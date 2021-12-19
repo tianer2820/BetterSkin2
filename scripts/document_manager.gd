@@ -119,7 +119,6 @@ func apply_draw_buffer():
 # queue render skin on next frame. Must be called when skin is modified.
 func queue_render_skin():
 	_queue_render_skin = true
-	
 
 
 func _read_only(new_value):

@@ -62,6 +62,7 @@ HistoryManager="*res://scripts/history_manager.gd"
 ToolManager="*res://scripts/tool_manager.gd"
 SkinRenderer="*res://scripts/skin_document/skin_renderer.gd"
 QuickToolManager="*res://scripts/quick_tool_manager.gd"
+CST="*res://scripts/cst.gd"
 
 [display]
 
