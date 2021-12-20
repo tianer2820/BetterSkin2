@@ -32,7 +32,7 @@ var draw_buffer_layer: SkinLayer setget _read_only
 var tool_indecator_layer: SkinLayer setget _read_only
 # the image that should be displaied on canvas
 var rendered_skin: Image setget _read_only
-
+# mask for selection
 var selection_mask: Image setget _read_only
 
 
