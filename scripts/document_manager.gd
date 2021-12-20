@@ -23,6 +23,8 @@ signal skin_rerendered
 signal active_layer_changed
 signal layers_changed
 
+var GLOBAL_DIALOGS = "/root/GUIRoot/GlobalDialogs/"
+
 # currently opened document
 var active_skin: SkinDocument setget _set_active_skin
 var active_layer: SkinLayer setget _set_active_layer, _get_active_layer
@@ -70,7 +72,10 @@ func ask_open_skin():
 func ask_save_skin(save_as=false):
 	pass
 func ask_import():
-	var dialog: FileDialog = get_tree().root.get_node("GUIRoot/GlobalDialogs/OpenPNGDialog")
+	var dialog: FileDialog = get_node(CST.IMPORT_PNG_DIALOG)
+	dialog.popup_centered()
+func ask_export():
+	var dialog: FileDialog = get_node(CST.EXPORT_PNG_DIALOG)
 	dialog.popup_centered()
 	
 

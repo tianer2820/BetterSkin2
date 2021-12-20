@@ -8,6 +8,7 @@ enum Action{
 	FILE_SAVE,
 	FILE_CLOSE,
 	FILE_IMPORT,
+	FILE_EXPORT,
 	
 	UNDO,
 	REDO,
@@ -15,3 +16,7 @@ enum Action{
 	SEL_ALL,
 	SEL_NONE,
 }
+
+const GLOBAL_DIALOG_ROOT = "/root/GUIRoot/GlobalDialogs/"
+const EXPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ExportPNGDialog"
+const IMPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ImportPNGDialog"

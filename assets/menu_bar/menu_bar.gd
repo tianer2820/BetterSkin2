@@ -12,6 +12,7 @@ func _ready() -> void:
 	file_menu.add_item("Save", CST.Action.FILE_SAVE, KEY_MASK_CMD | KEY_S)
 	file_menu.add_separator()
 	file_menu.add_item("Import", CST.Action.FILE_IMPORT)
+	file_menu.add_item("Export", CST.Action.FILE_EXPORT)
 	
 	var edit_menu = $EditButton.get_popup()
 	edit_menu.connect("id_pressed", self, "_on_edit_menu_id_pressed")
@@ -54,6 +55,8 @@ func _on_file_menu_id_pressed(id: int):
 		CST.Action.FILE_IMPORT:
 			# import a file as a layer
 			DocumentManager.ask_import()
+		CST.Action.FILE_EXPORT:
+			DocumentManager.ask_export()
 
 func _on_edit_menu_id_pressed(id: int):
 	match id:

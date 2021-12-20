@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/gui_root.gd" type="Script" id=1]
 [ext_resource path="res://arts/icons.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/tool_selector/tool_selector.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/menu_bar/menu_bar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/global_dialogs/open_png_dialog.gd" type="Script" id=9]
+[ext_resource path="res://assets/global_dialogs/export_png_dialog.gd" type="Script" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 3.0
@@ -361,8 +362,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="OpenPNGDialog" type="FileDialog" parent="GlobalDialogs"]
-visible = true
+[node name="ImportPNGDialog" type="FileDialog" parent="GlobalDialogs"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -382,5 +382,25 @@ current_dir = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2"
 current_path = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2/"
 script = ExtResource( 9 )
 
+[node name="ExportPNGDialog" type="FileDialog" parent="GlobalDialogs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -222.5
+margin_top = -152.0
+margin_right = 222.5
+margin_bottom = 152.0
+rect_min_size = Vector2( 250, 87.5 )
+window_title = "Export Skin"
+resizable = true
+access = 2
+filters = PoolStringArray( "*.png; PNG Files" )
+show_hidden_files = true
+current_dir = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2"
+current_path = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2/"
+script = ExtResource( 10 )
+
 [connection signal="pick_color" from="VBox/MainSplit/SettingsSplit/ColorSelector" to="." method="_on_ColorSelector_pick_color"]
-[connection signal="files_selected" from="GlobalDialogs/OpenPNGDialog" to="GlobalDialogs/OpenPNGDialog" method="_on_OpenPNGDialog_files_selected"]
+[connection signal="files_selected" from="GlobalDialogs/ImportPNGDialog" to="GlobalDialogs/ImportPNGDialog" method="_on_OpenPNGDialog_files_selected"]
+[connection signal="file_selected" from="GlobalDialogs/ExportPNGDialog" to="GlobalDialogs/ExportPNGDialog" method="_on_ExportPNGDialog_file_selected"]
