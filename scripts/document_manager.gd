@@ -69,6 +69,10 @@ func ask_open_skin():
 # popup window to save skin to a file
 func ask_save_skin(save_as=false):
 	pass
+func ask_import():
+	var dialog: FileDialog = get_tree().root.get_node("GUIRoot/GlobalDialogs/OpenPNGDialog")
+	dialog.popup_centered()
+	
 
 
 # load a new skin (currently invalid)

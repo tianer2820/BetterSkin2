@@ -7,6 +7,7 @@ enum Action{
 	FILE_OPEN,
 	FILE_SAVE,
 	FILE_CLOSE,
+	FILE_IMPORT,
 	
 	UNDO,
 	REDO,
