@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/layer_dropdown/layer_dropdown.gd" type="Script" id=1]
+[ext_resource path="res://assets/layer_dropdown/layer_editor_panel.gd" type="Script" id=2]
+[ext_resource path="res://assets/layer_dropdown/tree_list.gd" type="Script" id=3]
+
+[node name="LayersDropdown" type="OptionButton"]
+margin_right = 70.0
+margin_bottom = 24.0
+text = "LayerChooser"
+items = [ "LayerChooser", null, false, 0, null ]
+selected = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightClickButton" type="ToolButton" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+button_mask = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayerEditorPanel" type="PopupPanel" parent="."]
+visible = true
+margin_left = 96.0
+margin_top = 28.0
+margin_right = 318.0
+margin_bottom = 258.0
+rect_min_size = Vector2( 0, 230 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="LayerEditorPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="LayerEditorPanel/VBox"]
+margin_right = 214.0
+margin_bottom = 20.0
+
+[node name="BlendSlider" type="HSlider" parent="LayerEditorPanel/VBox"]
+margin_top = 24.0
+margin_right = 214.0
+margin_bottom = 40.0
+
+[node name="Layers" type="Tree" parent="LayerEditorPanel/VBox"]
+margin_top = 44.0
+margin_right = 214.0
+margin_bottom = 198.0
+input_pass_on_modal_close_click = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+allow_rmb_select = true
+hide_folding = true
+hide_root = true
+select_mode = 1
+script = ExtResource( 3 )
+
+[node name="Hbox" type="HBoxContainer" parent="LayerEditorPanel/VBox"]
+margin_top = 202.0
+margin_right = 214.0
+margin_bottom = 222.0
+
+[node name="Button" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+margin_right = 35.0
+margin_bottom = 20.0
+text = "add"
+
+[node name="Button2" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+margin_left = 39.0
+margin_right = 75.0
+margin_bottom = 20.0
+text = "dup"
+
+[node name="Button3" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+margin_left = 79.0
+margin_right = 107.0
+margin_bottom = 20.0
+text = "up"
+
+[node name="Button4" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+margin_left = 111.0
+margin_right = 157.0
+margin_bottom = 20.0
+text = "down"
+
+[node name="Button5" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+margin_left = 161.0
+margin_right = 214.0
+margin_bottom = 20.0
+text = "delete"
+
+[connection signal="item_selected" from="." to="." method="_on_LayersDropdown_item_selected"]
+[connection signal="pressed" from="RightClickButton" to="." method="_on_RightClickButton_pressed"]
+[connection signal="button_pressed" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_button_pressed"]
+[connection signal="item_edited" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_item_edited"]
+[connection signal="item_selected" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_item_selected"]

@@ -20,3 +20,10 @@ enum Action{
 const GLOBAL_DIALOG_ROOT = "/root/GUIRoot/GlobalDialogs/"
 const EXPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ExportPNGDialog"
 const IMPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ImportPNGDialog"
+
+enum TreeButton{
+	VISIBEL,
+	MV_UP,
+	MV_DOWN,
+	DUP,
+}
