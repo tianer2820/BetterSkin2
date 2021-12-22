@@ -40,7 +40,6 @@ func _sync_active_layer():
 
 
 func _set_active(index: int):
-	print("set")
 	var current: TreeItem = root.get_children()
 	while current != null:
 		if index == 0:
