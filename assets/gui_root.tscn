@@ -410,6 +410,17 @@ current_dir = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2"
 current_path = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2/"
 script = ExtResource( 10 )
 
+[node name="PreferencesDialog" type="WindowDialog" parent="GlobalDialogs"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -288.0
+margin_top = -206.0
+margin_right = 288.0
+margin_bottom = 206.0
+
 [connection signal="pick_color" from="VBox/MainSplit/SettingsSplit/ColorSelector" to="." method="_on_ColorSelector_pick_color"]
 [connection signal="files_selected" from="GlobalDialogs/ImportPNGDialog" to="GlobalDialogs/ImportPNGDialog" method="_on_OpenPNGDialog_files_selected"]
 [connection signal="file_selected" from="GlobalDialogs/ExportPNGDialog" to="GlobalDialogs/ExportPNGDialog" method="_on_ExportPNGDialog_file_selected"]

@@ -57,12 +57,13 @@ config/icon="res://icon.png"
 
 [autoload]
 
-DocumentManager="*res://scripts/document_manager.gd"
-HistoryManager="*res://scripts/history_manager.gd"
-ToolManager="*res://scripts/tool_manager.gd"
-SkinRenderer="*res://scripts/skin_document/skin_renderer.gd"
-QuickToolManager="*res://scripts/quick_tool_manager.gd"
 CST="*res://scripts/cst.gd"
+SettingsManager="*res://scripts/settings_manager.gd"
+DocumentManager="*res://scripts/document_manager.gd"
+SkinRenderer="*res://scripts/skin_document/skin_renderer.gd"
+ToolManager="*res://scripts/tool_manager.gd"
+QuickToolManager="*res://scripts/quick_tool_manager.gd"
+HistoryManager="*res://scripts/history_manager.gd"
 
 [display]
 

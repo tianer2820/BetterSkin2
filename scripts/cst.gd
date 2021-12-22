@@ -2,7 +2,7 @@ extends Node
 
 
 # action ids
-enum Action{
+enum MainMenuID{
 	FILE_NEW,
 	FILE_OPEN,
 	FILE_SAVE,
@@ -15,11 +15,14 @@ enum Action{
 	
 	SEL_ALL,
 	SEL_NONE,
+	
+	OPEN_PREFERENCE,
 }
 
 const GLOBAL_DIALOG_ROOT = "/root/GUIRoot/GlobalDialogs/"
 const EXPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ExportPNGDialog"
 const IMPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ImportPNGDialog"
+const PREFERENCE_DIALOG = GLOBAL_DIALOG_ROOT + "PreferencesDialog"
 
 enum TreeButton{
 	VISIBEL,
