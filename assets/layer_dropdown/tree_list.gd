@@ -95,6 +95,6 @@ func _on_Layers_item_selected() -> void:
 func _on_Layers_item_edited() -> void:
 	# rename layer
 	var item = get_edited()
-	var but_id = get_pressed_button()
-	
-	pass # Replace with function body.
+	var tree_idx = _get_item_index(item)
+	var layer_idx = DocumentManager.active_skin.layers.size() - 1 - tree_idx
+	DocumentManager.rename_layer(layer_idx, item.get_text(0))

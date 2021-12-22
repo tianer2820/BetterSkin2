@@ -125,6 +125,10 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 	return ret
 	emit_signal("layers_changed")
 
+func rename_layer(index: int, new_name: String):
+	active_skin.layers[index].name = new_name
+	emit_signal("layers_changed")
+
 
 # apply the current draw buffer layer, create undo/redo actions
 func apply_draw_buffer():
