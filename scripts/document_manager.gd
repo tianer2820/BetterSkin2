@@ -99,6 +99,8 @@ func _get_active_layer() -> SkinLayer:
 func _set_active_layer_index(new_value):
 	assert(new_value >= 0 and new_value < active_skin.layers.size(),
 			"invalid index value")
+	if active_layer_index == new_value:
+		return
 	active_layer_index = new_value
 	var new_res = self.active_layer.image.get_size()
 	draw_buffer_layer = SkinLayer.new("draw_buffer", new_res)

@@ -31,6 +31,7 @@ margin_top = 28.0
 margin_right = 318.0
 margin_bottom = 258.0
 rect_min_size = Vector2( 0, 230 )
+input_pass_on_modal_close_click = false
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,7 +61,6 @@ margin_bottom = 40.0
 margin_top = 44.0
 margin_right = 214.0
 margin_bottom = 198.0
-input_pass_on_modal_close_click = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 allow_reselect = true
