@@ -33,11 +33,11 @@ gui_disable_input = true
 [node name="2DWorld" parent="ViewportRenderer/2DViewport" instance=ExtResource( 1 )]
 
 [node name="BackgroundMenu" type="PopupMenu" parent="."]
+visible = true
 margin_left = 51.0
 margin_top = 2.0
 margin_right = 164.0
 margin_bottom = 54.0
-items = [ "Add Reference", null, 0, false, false, 0, 0, null, "", false, "Reset Canvas", null, 0, false, false, 1, 0, null, "", false ]
 
 [connection signal="open_bg_menu" from="ViewportRenderer/2DViewport/2DWorld" to="." method="_on_2DWorld_open_bg_menu"]
 [connection signal="id_pressed" from="BackgroundMenu" to="." method="_on_BackgroundMenu_id_pressed"]

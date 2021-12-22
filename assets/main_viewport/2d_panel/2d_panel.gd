@@ -1,17 +1,20 @@
 extends Control
 
+func _ready() -> void:
+	var bg_menu = $BackgroundMenu
+	bg_menu.clear()
+	bg_menu.add_item('Add Reference', CST.BGMenuID.ADD_REF)
+	bg_menu.add_item('Reset Canvas', CST.BGMenuID.RESET_CANVAS)
 
 
 func _on_BackgroundMenu_id_pressed(id: int) -> void:
 	match id:
-		0:
+		CST.BGMenuID.ADD_REF:
 			# add reference
 			pass
-		1:
+		CST.BGMenuID.RESET_CANVAS:
 			# reset canvas
 			$"ViewportRenderer/2DViewport/2DWorld".reset_camera()
-		2:
-			pass
 		_:
 			pass
 

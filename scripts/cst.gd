@@ -27,3 +27,9 @@ enum TreeButton{
 	MV_DOWN,
 	DUP,
 }
+
+enum BGMenuID{
+	ADD_REF,
+	RESET_CANVAS,
+	
+}
