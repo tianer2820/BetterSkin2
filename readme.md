@@ -45,14 +45,15 @@ Below are some current todo list. Begin with some simple ones to become familiar
 ### Complex
 - implement document open & save menu
 - implement undo redo
-- add pen buffer layer and pen indicator layer, reimplement render functions
+- add support for replace layer mode, for adding tools like move or eraser, so layer buffer can be used either as a alpha over or as a replacement
 
 ### Middle
 - move all constants to CST class
 - reimplement color picker signal structure to match other parts of the program
 - implement all tool properties panels
 - implement 3D to UV mapping, 3D viewport pen input
-- add support for replace layer mode, for adding tools like move or eraser, so layer buffer can be used either as a alpha over or as a replacement
+- implement layer viewer add/delete layer function
+- implement settings manager
 
 ### Simple
 - new icon
@@ -62,3 +63,5 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - add eraser tool
 - add pen tool
 - rewrite program interface to match the style of the DocumentManager
+- add all skin overlay texts
+- let 2d camera scale around mouse instead of screen center
