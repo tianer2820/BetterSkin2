@@ -26,9 +26,8 @@ const PREFERENCE_DIALOG = GLOBAL_DIALOG_ROOT + "PreferencesDialog"
 
 enum TreeButton{
 	VISIBEL,
-	MV_UP,
-	MV_DOWN,
-	DUP,
+	MERGE_DOWN,
+	DELETE,
 }
 
 enum BGMenuID{

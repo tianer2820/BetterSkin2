@@ -115,6 +115,7 @@ func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	if at_index <= active_layer_index:
 		active_layer_index += 1
 	emit_signal("layers_changed")
+	queue_render_skin()
 
 func pop_layer(at_index: int = 0) -> SkinLayer:
 	assert(at_index >= 0 and at_index < active_skin.layers.size(),
@@ -124,6 +125,7 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 		active_layer_index -= 1
 	return ret
 	emit_signal("layers_changed")
+	queue_render_skin()
 
 func rename_layer(index: int, new_name: String):
 	active_skin.layers[index].name = new_name

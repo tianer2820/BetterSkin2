@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/layer_dropdown/layer_dropdown.gd" type="Script" id=1]
 [ext_resource path="res://assets/layer_dropdown/layer_editor_panel.gd" type="Script" id=2]
 [ext_resource path="res://assets/layer_dropdown/tree_list.gd" type="Script" id=3]
+[ext_resource path="res://assets/layer_dropdown/button_box.gd" type="Script" id=4]
 
 [node name="LayersDropdown" type="OptionButton"]
 margin_right = 70.0
@@ -70,35 +71,36 @@ hide_root = true
 select_mode = 1
 script = ExtResource( 3 )
 
-[node name="Hbox" type="HBoxContainer" parent="LayerEditorPanel/VBox"]
+[node name="ButtonBox" type="HBoxContainer" parent="LayerEditorPanel/VBox"]
 margin_top = 202.0
 margin_right = 214.0
 margin_bottom = 222.0
+script = ExtResource( 4 )
 
-[node name="Button" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+[node name="ButtonAdd" type="Button" parent="LayerEditorPanel/VBox/ButtonBox"]
 margin_right = 35.0
 margin_bottom = 20.0
 text = "add"
 
-[node name="Button2" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+[node name="ButtonDup" type="Button" parent="LayerEditorPanel/VBox/ButtonBox"]
 margin_left = 39.0
 margin_right = 75.0
 margin_bottom = 20.0
 text = "dup"
 
-[node name="Button3" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+[node name="ButtonUp" type="Button" parent="LayerEditorPanel/VBox/ButtonBox"]
 margin_left = 79.0
 margin_right = 107.0
 margin_bottom = 20.0
 text = "up"
 
-[node name="Button4" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+[node name="ButtonDown" type="Button" parent="LayerEditorPanel/VBox/ButtonBox"]
 margin_left = 111.0
 margin_right = 157.0
 margin_bottom = 20.0
 text = "down"
 
-[node name="Button5" type="Button" parent="LayerEditorPanel/VBox/Hbox"]
+[node name="ButtonDelete" type="Button" parent="LayerEditorPanel/VBox/ButtonBox"]
 margin_left = 161.0
 margin_right = 214.0
 margin_bottom = 20.0
@@ -109,3 +111,8 @@ text = "delete"
 [connection signal="button_pressed" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_button_pressed"]
 [connection signal="item_edited" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_item_edited"]
 [connection signal="item_selected" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_item_selected"]
+[connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonAdd" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonAdd_pressed"]
+[connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonDup" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonDup_pressed"]
+[connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonUp" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonUp_pressed"]
+[connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonDown" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonDown_pressed"]
+[connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonDelete" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonDelete_pressed"]
