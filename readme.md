@@ -55,6 +55,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - implement layer viewer add/delete layer function
 - implement settings manager
 - implement select&move tool
+- add layers visibility functions
 
 ### Simple
 - new icon
@@ -66,4 +67,4 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - rewrite program interface to match the style of the DocumentManager
 - add all skin overlay texts
 - let 2d camera scale around mouse instead of screen center
-
+- implement new/delete layer button
