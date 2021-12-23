@@ -40,7 +40,9 @@ var selection_mask: Image setget _read_only
 
 # do skin need to be rendered on next frame
 var _queue_render_skin: bool = true
-
+# send signal flags
+var _emit_layers_changed: bool = false
+var _emit_active_layer_changed: bool = false
 
 func _ready() -> void:
 	# test code
@@ -60,6 +62,14 @@ func _process(delta: float) -> void:
 		rendered_skin = SkinRenderer.render_skin_preview()
 		emit_signal("skin_rerendered")
 		_queue_render_skin = false
+	
+	# emit queued signals
+	if _emit_active_layer_changed:
+		emit_signal("active_layer_changed")
+		_emit_active_layer_changed = false
+	if _emit_layers_changed:
+		emit_signal("layers_changed")
+		_emit_layers_changed = false
 
 
 # popup window to create a new skin
@@ -104,7 +114,7 @@ func _set_active_layer_index(new_value):
 	active_layer_index = new_value
 	var new_res = self.active_layer.image.get_size()
 	draw_buffer_layer = SkinLayer.new("draw_buffer", new_res)
-	emit_signal("active_layer_changed")
+	queue_emit_active_layer_changed()
 
 func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	assert(new_layer != null, "new layer cannot be null")
@@ -114,7 +124,7 @@ func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	active_skin.layers.insert(at_index, new_layer)
 	if at_index <= active_layer_index:
 		active_layer_index += 1
-	emit_signal("layers_changed")
+	queue_emit_layers_changed()
 	queue_render_skin()
 
 func pop_layer(at_index: int = 0) -> SkinLayer:
@@ -124,12 +134,12 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 	if at_index <= active_layer_index:
 		active_layer_index -= 1
 	return ret
-	emit_signal("layers_changed")
+	queue_emit_layers_changed()
 	queue_render_skin()
 
 func rename_layer(index: int, new_name: String):
 	active_skin.layers[index].name = new_name
-	emit_signal("layers_changed")
+	queue_emit_layers_changed()
 
 
 # apply the current draw buffer layer, create undo/redo actions
@@ -140,6 +150,10 @@ func apply_draw_buffer():
 # queue render skin on next frame. Must be called when skin is modified.
 func queue_render_skin():
 	_queue_render_skin = true
+func queue_emit_active_layer_changed():
+	_emit_active_layer_changed = true
+func queue_emit_layers_changed():
+	_emit_layers_changed = true
 
 
 func _read_only(new_value):

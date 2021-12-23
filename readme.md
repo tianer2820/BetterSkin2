@@ -68,4 +68,3 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - let 2d camera scale around mouse instead of screen center
 - change new layer import order
 - implement move layer
-- change Document manager update event emit to only once per frame
