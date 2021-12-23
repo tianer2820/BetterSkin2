@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _reload_layers():
 	self.clear()
-	var layers = DocumentManager.active_skin.layers.duplicate()
+	var layers = DocumentManager.layers
 	for i in range(layers.size()):
 		var index = layers.size() - i - 1 # reverse order
 		var layer = layers[index]

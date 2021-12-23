@@ -17,7 +17,7 @@ func _on_ButtonDup_pressed() -> void:
 
 func _on_ButtonUp_pressed() -> void:
 	var active_idx = DocumentManager.active_layer_index
-	var layer_num = DocumentManager.active_skin.layers.size()
+	var layer_num = DocumentManager.layers.size()
 	if active_idx >= layer_num - 1:
 		return
 	var layer = DocumentManager.pop_layer(active_idx)

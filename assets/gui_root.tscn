@@ -227,7 +227,6 @@ __meta__ = {
 [node name="LayerDropdown" parent="VBox/ConvenientBar" instance=ExtResource( 11 )]
 margin_left = 839.0
 margin_right = 954.0
-items = [ "LayerChooser", null, false, 0, null ]
 
 [node name="MainSplit" type="HSplitContainer" parent="VBox"]
 margin_top = 52.0

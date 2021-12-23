@@ -22,7 +22,7 @@ func _sync_layers():
 	root.free()
 	root = create_item()
 	
-	for layer in DocumentManager.active_skin.layers:
+	for layer in DocumentManager.layers:
 		layer = layer as SkinLayer
 		var item = self.create_item(root, 0)
 		item.set_text(0, layer.name)
@@ -35,7 +35,7 @@ func _sync_layers():
 
 func _sync_active_layer():
 	var layer_idx = DocumentManager.active_layer_index
-	var tree_idx = DocumentManager.active_skin.layers.size() - 1 - layer_idx
+	var tree_idx = DocumentManager.layers.size() - 1 - layer_idx
 	self._set_active(tree_idx)
 
 
@@ -87,7 +87,7 @@ func _on_Layers_button_pressed(item: TreeItem, column: int, id: int) -> void:
 func _on_Layers_item_selected() -> void:
 	var item = get_selected()
 	var index = _get_item_index(item)
-	var layer_idx = DocumentManager.active_skin.layers.size() - 1 - index
+	var layer_idx = DocumentManager.layers.size() - 1 - index
 	DocumentManager.active_layer_index = layer_idx
 
 
@@ -95,5 +95,5 @@ func _on_Layers_item_edited() -> void:
 	# rename layer
 	var item = get_edited()
 	var tree_idx = _get_item_index(item)
-	var layer_idx = DocumentManager.active_skin.layers.size() - 1 - tree_idx
+	var layer_idx = DocumentManager.layers.size() - 1 - tree_idx
 	DocumentManager.rename_layer(layer_idx, item.get_text(0))

@@ -67,4 +67,3 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - add all skin overlay texts
 - let 2d camera scale around mouse instead of screen center
 - change new layer import order
-- implement move layer

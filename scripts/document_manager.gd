@@ -29,6 +29,7 @@ var GLOBAL_DIALOGS = "/root/GUIRoot/GlobalDialogs/"
 var active_skin: SkinDocument setget _set_active_skin
 var active_layer: SkinLayer setget _set_active_layer, _get_active_layer
 var active_layer_index: int = -1 setget _set_active_layer_index
+var layers: Array setget _read_only, _get_layers
 # tooling layers
 var draw_buffer_layer: SkinLayer setget _read_only
 var tool_indecator_layer: SkinLayer setget _read_only
@@ -115,6 +116,10 @@ func _set_active_layer_index(new_value):
 	var new_res = self.active_layer.image.get_size()
 	draw_buffer_layer = SkinLayer.new("draw_buffer", new_res)
 	queue_emit_active_layer_changed()
+
+func _get_layers() -> Array:
+	return active_skin.layers.duplicate(false)
+
 
 func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	assert(new_layer != null, "new layer cannot be null")
