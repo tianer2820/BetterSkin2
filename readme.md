@@ -54,6 +54,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - implement 3D to UV mapping, 3D viewport pen input
 - implement layer viewer add/delete layer function
 - implement settings manager
+- implement select&move tool
 
 ### Simple
 - new icon
@@ -65,3 +66,5 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - rewrite program interface to match the style of the DocumentManager
 - add all skin overlay texts
 - let 2d camera scale around mouse instead of screen center
+- change new layer import order
+- implement move layer
