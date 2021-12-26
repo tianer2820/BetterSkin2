@@ -20,7 +20,10 @@ func _on_ButtonAdd_pressed() -> void:
 	
 
 func _on_ButtonDup_pressed() -> void:
-	pass # Replace with function body.
+	var dup_layer: SkinLayer = DocumentManager.active_layer.duplicate()
+	dup_layer.name += ".dup"
+	DocumentManager.add_layer(dup_layer,
+			DocumentManager.active_layer_index + 1)
 
 
 func _on_ButtonUp_pressed() -> void:
