@@ -30,6 +30,13 @@ enum TreeButton{
 	DELETE,
 }
 
+enum TreeMenu{
+	RENAME,
+	DUP,
+	DELETE,
+	MERGE_DOWN,
+}
+
 enum BGMenuID{
 	ADD_REF,
 	RESET_CANVAS,

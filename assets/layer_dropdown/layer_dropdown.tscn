@@ -71,6 +71,12 @@ hide_root = true
 select_mode = 1
 script = ExtResource( 3 )
 
+[node name="LayersMenu" type="PopupMenu" parent="LayerEditorPanel/VBox/Layers"]
+margin_left = 76.0
+margin_top = 6.0
+margin_right = 178.0
+margin_bottom = 141.0
+
 [node name="ButtonBox" type="HBoxContainer" parent="LayerEditorPanel/VBox"]
 margin_top = 202.0
 margin_right = 214.0
@@ -110,7 +116,9 @@ text = "delete"
 [connection signal="pressed" from="RightClickButton" to="." method="_on_RightClickButton_pressed"]
 [connection signal="button_pressed" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_button_pressed"]
 [connection signal="item_edited" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_item_edited"]
+[connection signal="item_rmb_selected" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_item_rmb_selected"]
 [connection signal="item_selected" from="LayerEditorPanel/VBox/Layers" to="LayerEditorPanel/VBox/Layers" method="_on_Layers_item_selected"]
+[connection signal="id_pressed" from="LayerEditorPanel/VBox/Layers/LayersMenu" to="LayerEditorPanel/VBox/Layers" method="_on_LayersMenu_id_pressed"]
 [connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonAdd" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonAdd_pressed"]
 [connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonDup" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonDup_pressed"]
 [connection signal="pressed" from="LayerEditorPanel/VBox/ButtonBox/ButtonUp" to="LayerEditorPanel/VBox/ButtonBox" method="_on_ButtonUp_pressed"]

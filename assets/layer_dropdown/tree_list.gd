@@ -7,6 +7,15 @@ var _icon_visible_on: Texture
 var _icon_visible_off: Texture
 
 func _ready() -> void:
+	# Prepare Menu Items
+	var menu = $LayersMenu
+	menu.add_item("Rename", CST.TreeMenu.RENAME)
+	menu.add_item("Duplicate", CST.TreeMenu.DUP)
+	menu.add_item("Delete", CST.TreeMenu.DELETE)
+	menu.add_item("Merge Down", CST.TreeMenu.MERGE_DOWN)
+	
+	#
+	
 	root = create_item()
 	self.hide_root = true
 	
@@ -97,3 +106,25 @@ func _on_Layers_item_edited() -> void:
 	var tree_idx = _get_item_index(item)
 	var layer_idx = DocumentManager.layers.size() - 1 - tree_idx
 	DocumentManager.rename_layer(layer_idx, item.get_text(0))
+
+
+func _on_Layers_item_rmb_selected(position: Vector2) -> void:
+	# popup menu
+	var menu = $LayersMenu
+	menu.rect_global_position = get_global_mouse_position()
+	menu.set_as_minsize()
+	menu.popup()
+
+func _on_LayersMenu_id_pressed(id: int) -> void:
+	match id:
+		CST.TreeMenu.RENAME:
+			edit_selected()
+		CST.TreeMenu.DUP:
+			var dup_layer: SkinLayer = DocumentManager.active_layer.duplicate()
+			dup_layer.name += ".dup"
+			DocumentManager.add_layer(dup_layer,
+					DocumentManager.active_layer_index + 1)
+		CST.TreeMenu.DELETE:
+			DocumentManager.pop_layer(DocumentManager.active_layer_index)
+		CST.TreeMenu.MERGE_DOWN:
+			pass
