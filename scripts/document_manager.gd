@@ -138,9 +138,9 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 	var ret = active_skin.layers.pop_at(at_index)
 	if at_index <= active_layer_index:
 		active_layer_index -= 1
-	return ret
 	queue_emit_layers_changed()
 	queue_render_skin()
+	return ret
 
 func rename_layer(index: int, new_name: String):
 	active_skin.layers[index].name = new_name

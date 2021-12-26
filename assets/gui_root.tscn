@@ -227,6 +227,7 @@ __meta__ = {
 [node name="LayerDropdown" parent="VBox/ConvenientBar" instance=ExtResource( 11 )]
 margin_left = 839.0
 margin_right = 954.0
+items = [ "LayerChooser", null, false, 0, null ]
 
 [node name="MainSplit" type="HSplitContainer" parent="VBox"]
 margin_top = 52.0
@@ -386,8 +387,8 @@ mode = 1
 access = 2
 filters = PoolStringArray( "*.png; PNG Files" )
 show_hidden_files = true
-current_dir = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2"
-current_path = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2/"
+current_dir = "/Users/tiane/Documents/MY OWN FILES/Programming/BetterSkin2"
+current_path = "/Users/tiane/Documents/MY OWN FILES/Programming/BetterSkin2/"
 script = ExtResource( 9 )
 
 [node name="ExportPNGDialog" type="FileDialog" parent="GlobalDialogs"]
@@ -405,8 +406,8 @@ resizable = true
 access = 2
 filters = PoolStringArray( "*.png; PNG Files" )
 show_hidden_files = true
-current_dir = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2"
-current_path = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2/"
+current_dir = "/Users/tiane/Documents/MY OWN FILES/Programming/BetterSkin2"
+current_path = "/Users/tiane/Documents/MY OWN FILES/Programming/BetterSkin2/"
 script = ExtResource( 10 )
 
 [node name="PreferencesDialog" type="WindowDialog" parent="GlobalDialogs"]

@@ -8,8 +8,16 @@ func _ready() -> void:
 
 
 func _on_ButtonAdd_pressed() -> void:
-	pass # Replace with function body.
-
+	var current_layer = DocumentManager.active_layer
+	var new_size: Vector2
+	if current_layer != null:
+		new_size = current_layer.image.get_size()
+	else:
+		var res = DocumentManager.active_skin.resolution
+		new_size = Vector2(res, res)
+	var new_layer = SkinLayer.new("new layer", new_size)
+	DocumentManager.add_layer(new_layer, DocumentManager.active_layer_index + 1)
+	
 
 func _on_ButtonDup_pressed() -> void:
 	pass # Replace with function body.
@@ -35,4 +43,4 @@ func _on_ButtonDown_pressed() -> void:
 
 
 func _on_ButtonDelete_pressed() -> void:
-	pass # Replace with function body.
+	DocumentManager.pop_layer(DocumentManager.active_layer_index)
