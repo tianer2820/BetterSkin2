@@ -55,7 +55,6 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - implement layer viewer add/delete layer function
 - implement settings manager
 - implement select&move tool
-- add layers visibility functions
 
 ### Simple
 - new icon
