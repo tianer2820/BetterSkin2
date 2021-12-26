@@ -38,6 +38,13 @@ func _sync_layers():
 		item.set_icon(0, load("res://icon.png"))
 		item.set_icon_max_width(0, 20)
 		
+		# icons
+		var icon
+		if layer.visible:
+			icon = _icon_visible_on
+		else:
+			icon = _icon_visible_off
+		
 		item.add_button(0, _icon_visible_on, CST.TreeButton.VISIBEL)
 		item.set_editable(0, true)
 	_sync_active_layer()
@@ -82,15 +89,19 @@ func _on_active_layer_change():
 func _on_Layers_button_pressed(item: TreeItem, column: int, id: int) -> void:
 	match id:
 		CST.TreeButton.VISIBEL:
+			var idx = _get_item_index(item)
+			var layer_idx = DocumentManager.layers.size() - 1 - idx
+			var layer = DocumentManager.layers[layer_idx]
+			
 			var tex = item.get_button(column, id)
-			if tex == _icon_visible_on:
+			if layer.visible:
 				tex = _icon_visible_off
-				# set layer visible off
+				layer.visible = false
 			else:
 				tex = _icon_visible_on
-				# set layer visible on
+				layer.visible = true
 			item.set_button(column, id, tex)
-			print("pressed on: {0}".format([_get_item_index(item)]))
+			DocumentManager.queue_render_skin()
 
 
 func _on_Layers_item_selected() -> void:

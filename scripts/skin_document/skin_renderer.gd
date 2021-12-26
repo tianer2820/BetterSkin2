@@ -9,6 +9,8 @@ static func render_skin_export(skin: SkinDocument) -> Image:
 	final_img.fill(Color(1, 1, 1, 0))
 	
 	for layer in layers:
+		if not layer.visible:
+			continue
 		var img = layer.image as Image
 		var size = img.get_size()
 		var new_img = _pixel_resize(img,
@@ -33,6 +35,8 @@ static func render_skin_preview() -> Image:
 	
 	for i in range(layers.size()):
 		var layer = layers[i]
+		if not layer.visible:
+			continue
 		var img = layer.image as Image
 		var new_img = _pixel_resize(img, Vector2(resolution, resolution))
 		final_img.blend_rect(new_img,

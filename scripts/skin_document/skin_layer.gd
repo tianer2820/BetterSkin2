@@ -3,12 +3,14 @@ class_name SkinLayer
 
 
 var name: String
+var visible: bool
 var alpha: float
 var image: Image
 
 
 func _init(name: String, size: Vector2) -> void:
 	self.name = name
+	visible = true
 	alpha = 1.0
 	image = Image.new()
 	image.create(size.x, size.y, false, Image.FORMAT_RGBA8)
