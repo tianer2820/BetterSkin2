@@ -55,6 +55,10 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - implement layer viewer add/delete layer function
 - implement settings manager
 - implement select&move tool
+- add color palette, color mix/gradient generator, palette from image/palette to image, fill with palette etc.
+- add region in skins, region fill, auto shadows, mirror, region select etc.
+- add noise
+- region clip option for pen tool
 
 ### Simple
 - new icon
