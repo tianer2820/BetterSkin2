@@ -69,7 +69,7 @@ static func merge_layers(upper: SkinLayer, lower: SkinLayer):
 
 static func _pixel_resize(img: Image, target_size: Vector2) -> Image:
 	var new_img = Image.new()
-	var size = new_img.get_size()
+	var size = img.get_size()
 	new_img.create(size.x, size.y,
 			false, Image.FORMAT_RGBA8)
 	new_img.copy_from(img)

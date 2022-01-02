@@ -34,3 +34,4 @@ func _gui_input(event: InputEvent) -> void:
 		if is_dragging:
 			$"3DViewport/3DWorld".move_camera(-event.relative)
 	
+

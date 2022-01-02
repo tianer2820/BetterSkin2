@@ -33,18 +33,18 @@ gui_disable_input = true
 modulate = Color( 1, 1, 1, 0.690196 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -84.0
+margin_left = -153.0
 margin_top = 7.0
 margin_right = -8.0
-margin_bottom = 110.0
+margin_bottom = 196.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="3DOverlay"]
 margin_left = 7.0
-margin_top = 27.0
-margin_right = 69.0
-margin_bottom = 75.0
+margin_top = 87.0
+margin_right = 138.0
+margin_bottom = 101.0
 text = "3D Overlay Panel"
 autowrap = true

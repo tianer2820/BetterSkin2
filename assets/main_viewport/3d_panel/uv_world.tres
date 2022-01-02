@@ -1,0 +1,9 @@
+[gd_resource type="World" load_steps=2 format=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_energy = 0.0
+ambient_light_energy = 0.0
+
+[resource]
+environment = SubResource( 1 )

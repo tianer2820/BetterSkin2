@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://arts/grass_block_side.png" type="Texture" id=1]
 [ext_resource path="res://assets/main_viewport/3d_panel/3Dworld.gd" type="Script" id=2]
 [ext_resource path="res://assets/main_viewport/3d_panel/model/Rig basic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/main_viewport/3d_panel/uv_viewport.gd" type="Script" id=4]
+[ext_resource path="res://assets/main_viewport/3d_panel/uv_world.tres" type="World" id=5]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -23,7 +25,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.471103, 0 )
 
 [node name="Camera" type="Camera" parent="CameraRoot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4918 )
+current = true
 fov = 40.0
 
 [node name="Rig basic" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.457811, 0, 0, 0, 0.457811, 0, 0, 0, 0.457811, 0.0193971, -0.0460117, 0.0285792 )
+transform = Transform( 0.457811, 0, 0, 0, 0.457811, 0, 0, 0, 0.457811, 0, 0, 0 )
+
+[node name="UVViewport" type="Viewport" parent="."]
+size = Vector2( 300, 200 )
+own_world = true
+world = ExtResource( 5 )
+keep_3d_linear = true
+usage = 3
+render_target_v_flip = true
+render_target_update_mode = 3
+script = ExtResource( 4 )
+
+[node name="Camera" type="Camera" parent="UVViewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.704967, 0.429841, 0.551708 )
+
+[node name="Rig basic2" parent="UVViewport" instance=ExtResource( 3 )]
+transform = Transform( 0.458, 0, 0, 0, 0.458, 0, 0, 0, 0.458, 0, 0, 0 )
