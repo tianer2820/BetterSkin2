@@ -45,7 +45,6 @@ Below are some current todo list. Begin with some simple ones to become familiar
 ### Complex
 - implement document open & save menu
 - implement undo redo
-- add support for replace layer mode, for adding tools like move or eraser, so layer buffer can be used either as a alpha over or as a replacement
 
 ### Middle
 - move all constants to CST class
@@ -75,5 +74,5 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - move document manager test code to a load_skin function
 
 ### Currently working on:
-- layer render mode: replace
+- add eraser tool
 - regions and skin formats
