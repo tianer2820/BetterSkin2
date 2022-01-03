@@ -152,7 +152,7 @@ func rename_layer(index: int, new_name: String):
 
 # apply the current draw buffer layer, create undo/redo actions
 func apply_draw_buffer():
-	SkinRenderer.merge_layers(self.draw_buffer_layer, self.active_layer)
+	self.active_layer.image.copy_from(self.draw_buffer_layer.image)
 	print_debug("add undo/redo action here")
 
 # queue render skin on next frame. Must be called when skin is modified.
