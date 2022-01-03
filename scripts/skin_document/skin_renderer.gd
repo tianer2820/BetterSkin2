@@ -37,19 +37,19 @@ static func render_skin_preview() -> Image:
 		var layer = layers[i]
 		if not layer.visible:
 			continue
-		var img = layer.image as Image
-		var new_img = _pixel_resize(img, Vector2(resolution, resolution))
-		final_img.blend_rect(new_img,
-				Rect2(0, 0, resolution, resolution),
-				Vector2(0, 0))
-		
+
+		var new_img: Image
 		if i == active_layer:
 			# time to add buffer layer
 			new_img = _pixel_resize(draw_buffer.image,
 					Vector2(resolution, resolution))
-			final_img.blend_rect(new_img,
-					Rect2(0, 0, resolution, resolution),
-					Vector2(0, 0))
+		else:
+			var img = layer.image as Image
+			new_img = _pixel_resize(img, Vector2(resolution, resolution))
+			
+		final_img.blend_rect(new_img,
+				Rect2(0, 0, resolution, resolution),
+				Vector2(0, 0))
 	
 	# add tool indecator layer
 	var new_img = _pixel_resize(tool_indecator.image,

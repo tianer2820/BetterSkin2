@@ -60,6 +60,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - add noise
 - region clip option for pen tool
 - add pose function, make 3D model a separate asset with internal functions and simple interface
+- add grid on 3D
 
 ### Simple
 - new icon
@@ -71,6 +72,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - rewrite program interface to match the style of the DocumentManager
 - add all skin overlay texts
 - let 2d camera scale around mouse instead of screen center
+- move document manager test code to a load_skin function
 
 ### Currently working on:
 - layer render mode: replace

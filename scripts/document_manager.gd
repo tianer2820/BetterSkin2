@@ -33,6 +33,7 @@ var layers: Array setget _read_only, _get_layers
 # tooling layers
 var draw_buffer_layer: SkinLayer setget _read_only
 var tool_indecator_layer: SkinLayer setget _read_only
+
 # the image that should be displaied on canvas
 var rendered_skin: Image setget _read_only
 # mask for selection
@@ -53,6 +54,8 @@ func _ready() -> void:
 			Vector2(active_skin.resolution, active_skin.resolution))
 	draw_buffer_layer = SkinLayer.new("draw_buffer",
 			Vector2(active_skin.resolution, active_skin.resolution))
+	draw_buffer_layer.copy_from(self.active_layer)
+	
 	selection_mask = Image.new()
 	selection_mask.create(active_skin.resolution, active_skin.resolution, false, Image.FORMAT_RGBA8)
 
@@ -113,8 +116,8 @@ func _set_active_layer_index(new_value):
 	if active_layer_index == new_value:
 		return
 	active_layer_index = new_value
-	var new_res = self.active_layer.image.get_size()
-	draw_buffer_layer = SkinLayer.new("draw_buffer", new_res)
+	
+	draw_buffer_layer.copy_from(self.active_layer)
 	queue_emit_active_layer_changed()
 
 func _get_layers() -> Array:
