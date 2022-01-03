@@ -48,16 +48,8 @@ var _emit_active_layer_changed: bool = false
 
 func _ready() -> void:
 	# test code
-	active_skin = SkinDocument.new(SkinDocument.TYPE_STEVE)
-	active_layer_index = 0
-	tool_indecator_layer = SkinLayer.new("tool_indecator",
-			Vector2(active_skin.resolution, active_skin.resolution))
-	draw_buffer_layer = SkinLayer.new("draw_buffer",
-			Vector2(active_skin.resolution, active_skin.resolution))
-	draw_buffer_layer.copy_from(self.active_layer)
+	self.active_skin = SkinDocument.new(SkinDocument.TYPE_STEVE)
 	
-	selection_mask = Image.new()
-	selection_mask.create(active_skin.resolution, active_skin.resolution, false, Image.FORMAT_RGBA8)
 
 
 func _process(delta: float) -> void:
@@ -95,8 +87,25 @@ func ask_export():
 
 
 # load a new skin (currently invalid)
-func _set_active_skin(doc):
-	_read_only(doc)
+func _set_active_skin(skin: SkinDocument):
+	active_skin = skin
+	if skin != null:
+		var res = self.active_skin.resolution
+		tool_indecator_layer = SkinLayer.new("tool_indecator",
+				Vector2(res, res))
+		draw_buffer_layer = SkinLayer.new("draw_buffer",
+				Vector2(res, res))
+		selection_mask = Image.new()
+		selection_mask.create(res, res, false, Image.FORMAT_RGBA8)
+				
+		self.active_layer_index = min(0, skin.layers.size() - 1)
+		
+	else:
+		self.active_layer_index = -1
+		self.tool_indecator_layer = null
+		self.draw_buffer_layer = null
+		self.selection_mask = null
+
 
 func _set_active_layer(new_value: SkinLayer):
 	var index = active_skin.layers.find(new_value)
@@ -104,14 +113,14 @@ func _set_active_layer(new_value: SkinLayer):
 	self.active_layer_index = index
 
 func _get_active_layer() -> SkinLayer:
-	if(active_skin == null):
+	if(self.active_skin == null):
 		return null
-	if(active_layer_index < 0):
+	if(self.active_layer_index < 0):
 		return null
-	return active_skin.layers[active_layer_index]
+	return self.active_skin.layers[self.active_layer_index]
 
 func _set_active_layer_index(new_value):
-	assert(new_value >= 0 and new_value < active_skin.layers.size(),
+	assert(new_value < self.active_skin.layers.size(),
 			"invalid index value")
 	if active_layer_index == new_value:
 		return
@@ -121,32 +130,32 @@ func _set_active_layer_index(new_value):
 	queue_emit_active_layer_changed()
 
 func _get_layers() -> Array:
-	return active_skin.layers.duplicate(false)
+	return self.active_skin.layers.duplicate(false)
 
 
 func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	assert(new_layer != null, "new layer cannot be null")
-	assert(not new_layer in active_skin.layers,
+	assert(not new_layer in self.active_skin.layers,
 			"new layer already in layer list")
-	at_index = clamp(at_index, 0, active_skin.layers.size())
-	active_skin.layers.insert(at_index, new_layer)
+	at_index = clamp(at_index, 0, self.active_skin.layers.size())
+	self.active_skin.layers.insert(at_index, new_layer)
 	if at_index <= active_layer_index:
-		active_layer_index += 1
+		self.active_layer_index += 1
 	queue_emit_layers_changed()
 	queue_render_skin()
 
 func pop_layer(at_index: int = 0) -> SkinLayer:
-	assert(at_index >= 0 and at_index < active_skin.layers.size(),
+	assert(at_index >= 0 and at_index < self.active_skin.layers.size(),
 			"index out of range")
-	var ret = active_skin.layers.pop_at(at_index)
-	if at_index <= active_layer_index:
-		active_layer_index -= 1
+	var ret = self.active_skin.layers.pop_at(at_index)
+	if at_index <= self.active_layer_index:
+		self.active_layer_index -= 1
 	queue_emit_layers_changed()
 	queue_render_skin()
 	return ret
 
 func rename_layer(index: int, new_name: String):
-	active_skin.layers[index].name = new_name
+	self.active_skin.layers[index].name = new_name
 	queue_emit_layers_changed()
 
 

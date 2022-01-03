@@ -73,7 +73,6 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - add all skin overlay texts
 - let 2d camera scale around mouse instead of screen center
 - shortcut to add color to palette, increase/decrease brightness, previous/next pallete
-- move document manager test code to a load_skin function
 
 ### Currently working on:
 - add eraser tool
