@@ -34,9 +34,11 @@ Solving these problems is the primary goal of this project.
 - paint custom models
 
 ## Contirbute
-This projects is still in its very early stage, any api/structure may change, so no pull request will be accepted.
+This projects is still in its early stage, many api/structure may change.
 
-Contributions are welcomed after V1.0 is out, after the main architecture is fixed.
+Contribution is welcomed, simply start a pull request.
+
+You can also submit bug reports or feature request in the issues tab.
 
 
 ## TODOs
@@ -73,6 +75,6 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - let 2d camera scale around mouse instead of screen center
 - shortcut to add color to palette, increase/decrease brightness, previous/next pallete
 
-### Currently working on:
+### I'm Currently working on:
 - add eraser tool
 - regions and skin formats
