@@ -13,6 +13,7 @@ func _ready() -> void:
 	DocumentManager.connect("skin_rerendered", self, "_refresh_render")
 	
 	get_viewport().connect("size_changed", self, '_on_viewport_size_change')
+	_sync_cam()
 
 
 func _input(event: InputEvent) -> void:
