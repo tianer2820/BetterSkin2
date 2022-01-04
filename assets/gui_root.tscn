@@ -420,6 +420,5 @@ margin_top = -206.0
 margin_right = 288.0
 margin_bottom = 206.0
 
-[connection signal="pick_color" from="VBox/MainSplit/SettingsSplit/ColorSelector" to="." method="_on_ColorSelector_pick_color"]
 [connection signal="files_selected" from="GlobalDialogs/ImportPNGDialog" to="GlobalDialogs/ImportPNGDialog" method="_on_OpenPNGDialog_files_selected"]
 [connection signal="file_selected" from="GlobalDialogs/ExportPNGDialog" to="GlobalDialogs/ExportPNGDialog" method="_on_ExportPNGDialog_file_selected"]

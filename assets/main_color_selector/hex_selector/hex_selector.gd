@@ -1,13 +1,13 @@
 extends HBoxContainer
 
 
-signal pick_color(new_color)
 
 var picker_color: Color setget _set_color
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_set_color(Color(1, 1, 1))
+	ToolManager.connect("prime_color_changed", self, "_on_manager_color_change")
+	_set_color(ToolManager.get_prime_color())
 
 
 # Set the color without triggering the color_selected signal
@@ -24,8 +24,12 @@ func _on_LineEdit_text_changed(new_text: String) -> void:
 
 	picker_color = Color(new_text)
 	_regulate_text()
-	emit_signal("pick_color", picker_color)
+	ToolManager.set_prime_color(picker_color)
 
 
 func _regulate_text():
 	$LineEdit.text = picker_color.to_html(false)
+
+
+func _on_manager_color_change():
+	_set_color(ToolManager.get_prime_color())

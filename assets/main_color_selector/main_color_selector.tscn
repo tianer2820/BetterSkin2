@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://assets/main_color_selector/main_color_selector.gd" type="Script" id=2]
+[ext_resource path="res://assets/main_color_selector/color_rect.gd" type="Script" id=2]
 [ext_resource path="res://assets/main_color_selector/circle_selector/circle_selector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/main_color_selector/hex_selector/hex_selector.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/main_color_selector/rgb_selector/rgb_selector.tscn" type="PackedScene" id=5]
@@ -9,7 +9,6 @@
 [node name="MainColorSelector" type="PanelContainer"]
 margin_right = 234.0
 margin_bottom = 289.0
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -34,6 +33,7 @@ margin_top = 141.0
 margin_right = 220.0
 margin_bottom = 151.0
 rect_min_size = Vector2( 0, 10 )
+script = ExtResource( 2 )
 
 [node name="ColorSelector" type="TabContainer" parent="VBoxContainer"]
 margin_top = 155.0
@@ -70,7 +70,3 @@ texture = ExtResource( 1 )
 stretch_mode = 6
 
 [node name="HexSelector" parent="VBoxContainer" instance=ExtResource( 4 )]
-
-[connection signal="pick_color" from="VBoxContainer/CircleSelector" to="." method="_on_CircleSelector_pick_color"]
-[connection signal="pick_color" from="VBoxContainer/ColorSelector/RGB" to="." method="_on_RGB_pick_color"]
-[connection signal="pick_color" from="VBoxContainer/HexSelector" to="." method="_on_HexSelector_pick_color"]

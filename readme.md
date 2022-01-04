@@ -48,7 +48,6 @@ Below are some current todo list. Begin with some simple ones to become familiar
 
 ### Middle
 - move all constants to CST class
-- reimplement color picker signal structure to match other parts of the program
 - implement all tool properties panels
 - implement 3D to UV mapping, 3D viewport pen input
 - implement layer viewer add/delete layer function
