@@ -75,6 +75,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - let 2d camera scale around mouse instead of screen center
 - shortcut to add color to palette, increase/decrease brightness, previous/next pallete
 - add alpha to color selector
+- complete steve & alex skin region json file
 
 ### I'm Currently working on:
 - add eraser tool
