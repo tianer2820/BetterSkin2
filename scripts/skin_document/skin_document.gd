@@ -39,9 +39,29 @@ static functions for creating new instance
 """
 
 static func create_steve():
-	var skin = SkinDocument.new(TYPE_STEVE, 64)
-	return skin
+	var skin_document_class = load("res://scripts/skin_document/skin_document.gd") as GDScript
+	var skin = skin_document_class.new(TYPE_STEVE, 64)
 	
+	# load regions data from json
+	var file = File.new()
+	file.open("res://scripts/skin_document/region_formats/steve.json", File.READ)
+	var text = file.get_as_text()
+	var p = JSON.parse(text)
+	if typeof(p.result) != TYPE_ARRAY:
+		push_error("Unexpected json parse results.")
+	# set region values
+	for obj in p.result:
+		var region: SkinRegion = SkinRegion.new()
+		region.name = obj["name"]
+		var rect = obj["rect"]
+		region.rect = Rect2(rect[0], rect[1], rect[2], rect[3])
+		skin.regions.append(region)
+
+	return skin
+
+
 static func create_alex():
-	var skin = SkinDocument.new(TYPE_ALEX, 64)
+	var skin_document_class = load("res://scripts/skin_document/skin_document.gd") as GDScript
+	var skin = skin_document_class.new(TYPE_ALEX, 64)
+
 	return skin

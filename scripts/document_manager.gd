@@ -48,7 +48,8 @@ var _emit_active_layer_changed: bool = false
 
 func _ready() -> void:
 	# test code
-	self.active_skin = SkinDocument.new(SkinDocument.TYPE_STEVE)
+#	self.active_skin = SkinDocument.new(SkinDocument.TYPE_STEVE)
+	self.active_skin = SkinDocument.create_steve()
 	
 
 
