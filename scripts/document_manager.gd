@@ -22,6 +22,7 @@ signal skin_rerendered
 # layer change notifications
 signal active_layer_changed
 signal layers_changed
+signal skin_changed
 
 var GLOBAL_DIALOGS = "/root/GUIRoot/GlobalDialogs/"
 

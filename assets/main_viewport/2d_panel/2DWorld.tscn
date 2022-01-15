@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/main_viewport/2d_panel/skin_template_edge.png" type="Texture" id=1]
 [ext_resource path="res://assets/main_viewport/2d_panel/2Dworld.gd" type="Script" id=2]
 [ext_resource path="res://assets/main_viewport/2d_panel/2D_skin_rect.gd" type="Script" id=3]
 [ext_resource path="res://assets/main_viewport/2d_panel/alpha_panel.png" type="Texture" id=4]
-[ext_resource path="res://assets/main_viewport/2d_panel/SkinOverlayTextScaler.gd" type="Script" id=5]
 
 [node name="2DWorld" type="Node2D"]
 script = ExtResource( 2 )
@@ -45,42 +43,14 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="Overlay" type="Node2D" parent="."]
+position = Vector2( -32, -32 )
+
+[node name="Line2D" type="Line2D" parent="Overlay"]
+points = PoolVector2Array( 1, -5, -11, 6, -2, 15 )
+width = 0.1
+default_color = Color( 1, 1, 1, 1 )
+begin_cap_mode = 1
+end_cap_mode = 1
+
 [node name="RefContainer" type="Node2D" parent="."]
-
-[node name="SkinLineOverlay" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
-mouse_filter = 2
-texture = ExtResource( 1 )
-expand = true
-stretch_mode = 1
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Head" type="Label" parent="SkinLineOverlay"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 41.0
-margin_bottom = 22.0
-text = "Head"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Hat" type="Label" parent="SkinLineOverlay"]
-margin_left = 40.0
-margin_top = 8.0
-margin_right = 62.0
-margin_bottom = 22.0
-text = "Hat"
-__meta__ = {
-"_edit_use_anchors_": false
-}
