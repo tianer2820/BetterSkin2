@@ -22,6 +22,8 @@ var resolution = 64
 UI should display it in the reverse order"""
 var layers: Array = []
 
+# regions to be displayed
+var regions: Array = []
 
 func _init(type, res: int = 64) -> void:
 	skin_type = type
@@ -30,3 +32,16 @@ func _init(type, res: int = 64) -> void:
 	var new_layer = SkinLayer.new("Base",
 			Vector2(resolution, resolution))
 	layers.append(new_layer)
+
+
+"""
+static functions for creating new instance
+"""
+
+static func create_steve():
+	var skin = SkinDocument.new(TYPE_STEVE, 64)
+	return skin
+	
+static func create_alex():
+	var skin = SkinDocument.new(TYPE_ALEX, 64)
+	return skin
