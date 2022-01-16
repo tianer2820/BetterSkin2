@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/main_viewport/3d_panel/3DWorld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/main_viewport/3d_panel/3d_panel.gd" type="Script" id=2]
 [ext_resource path="res://assets/main_viewport/3d_panel/3Dviewport_renderer.gd" type="Script" id=3]
+[ext_resource path="res://assets/main_viewport/3d_panel/body_panel.tscn" type="PackedScene" id=4]
 
 [node name="3DPanel" type="Control"]
 margin_right = 403.0
 margin_bottom = 502.0
+rect_clip_content = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -33,18 +35,43 @@ gui_disable_input = true
 modulate = Color( 1, 1, 1, 0.690196 )
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -153.0
+margin_left = -114.0
 margin_top = 7.0
 margin_right = -8.0
-margin_bottom = 196.0
+margin_bottom = 367.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="3DOverlay"]
+[node name="VBoxContainer" type="VBoxContainer" parent="3DOverlay"]
 margin_left = 7.0
-margin_top = 87.0
-margin_right = 138.0
-margin_bottom = 101.0
-text = "3D Overlay Panel"
+margin_top = 7.0
+margin_right = 99.0
+margin_bottom = 353.0
+
+[node name="Label" type="Label" parent="3DOverlay/VBoxContainer"]
+margin_right = 92.0
+margin_bottom = 14.0
+text = "Visible Parts"
 autowrap = true
+
+[node name="BodyPanel" parent="3DOverlay/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 18.0
+margin_right = 92.0
+margin_bottom = 159.0
+
+[node name="BodyPanel2" parent="3DOverlay/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 163.0
+margin_right = 92.0
+margin_bottom = 304.0
+
+[node name="Label2" type="Label" parent="3DOverlay/VBoxContainer"]
+margin_top = 308.0
+margin_right = 92.0
+margin_bottom = 322.0
+text = "Pose"
+
+[node name="OptionButton" type="OptionButton" parent="3DOverlay/VBoxContainer"]
+margin_top = 326.0
+margin_right = 92.0
+margin_bottom = 346.0
