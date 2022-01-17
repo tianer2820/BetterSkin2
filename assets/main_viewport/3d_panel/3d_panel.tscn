@@ -71,7 +71,9 @@ margin_right = 92.0
 margin_bottom = 322.0
 text = "Pose"
 
-[node name="OptionButton" type="OptionButton" parent="3DOverlay/VBoxContainer"]
+[node name="PoseOption" type="OptionButton" parent="3DOverlay/VBoxContainer"]
 margin_top = 326.0
 margin_right = 92.0
 margin_bottom = 346.0
+
+[connection signal="item_selected" from="3DOverlay/VBoxContainer/PoseOption" to="." method="_on_PoseOption_item_selected"]

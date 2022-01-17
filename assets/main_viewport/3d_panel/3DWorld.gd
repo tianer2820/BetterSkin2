@@ -54,6 +54,12 @@ func _input(event: InputEvent) -> void:
 			ToolManager.pen_move(uv)
 
 
+func get_pose_list() -> Array:
+	return $"Rig basic".get_pose_list()
+
+func set_pose(pose: String):
+	$"Rig basic".set_pose(pose)
+	$"UVViewport/Rig basic2".set_pose(pose)
 
 
 func move_camera(delta: Vector2):
