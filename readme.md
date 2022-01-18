@@ -62,6 +62,7 @@ Below are some current todo list. Begin with some simple ones to become familiar
 - add pose function, make 3D model a separate asset with internal functions and simple interface
 - show grid on 3D
 - add support for custom shortcut keys for tool switching & quick tools
+- auto change 3D display grid size when active layer changes
 
 ### Simple
 - new icon

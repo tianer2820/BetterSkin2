@@ -7,13 +7,14 @@ var _camera_pitch = 0
 onready var _cam_root = $CameraRoot
 onready var _camera = $CameraRoot/Camera
 
-var material = preload("res://assets/main_viewport/3d_panel/model/Skin.material")
+var material = preload("res://assets/main_viewport/3d_panel/grid_shadermaterial.tres")
 
 func _ready() -> void:
 	DocumentManager.connect("skin_rerendered", self, "_refresh_render")
-	
 	get_viewport().connect("size_changed", self, '_on_viewport_size_change')
 	_sync_cam()
+	
+	$"Rig basic".material = material;
 
 
 func _input(event: InputEvent) -> void:
@@ -99,7 +100,7 @@ func _refresh_render():
 	
 	var tex = ImageTexture.new()
 	tex.create_from_image(DocumentManager.rendered_skin, 0)
-	mat.albedo_texture = tex
+	mat.set_shader_param("tex", tex)
 
 
 func _on_viewport_size_change():
