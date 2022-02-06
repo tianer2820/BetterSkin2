@@ -8,6 +8,8 @@ var _is_min = false
 func _ready() -> void:
 	pass # Replace with function body.
 
+# position adjustment
+
 func _on_ButtonLeft_pressed() -> void:
 	self.get_parent().move_child(self, 0)
 
@@ -30,3 +32,6 @@ func _on_ButtonMin_pressed() -> void:
 			else:
 				child.show()
 		
+
+
+

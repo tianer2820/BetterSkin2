@@ -42,3 +42,19 @@ enum BGMenuID{
 	RESET_CANVAS,
 	
 }
+
+enum BodyPartID{
+	HEAD,
+	BODY,
+	ARM_R,
+	ARM_L,
+	LEG_R,
+	LEG_L,
+	
+	HEAD2,
+	BODY2,
+	ARM_R2,
+	ARM_L2,
+	LEG_R2,
+	LEG_L2,
+}

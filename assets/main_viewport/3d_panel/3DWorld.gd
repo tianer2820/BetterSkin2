@@ -63,6 +63,11 @@ func set_pose(pose: String):
 	$"UVViewport/Rig basic2".set_pose(pose)
 
 
+func set_part_visibility(part_id, visibility):
+	$"Rig basic".set_part_visibility(part_id, visibility)
+	$"UVViewport/Rig basic2".set_part_visibility(part_id, visibility)
+
+
 func move_camera(delta: Vector2):
 	_camera_facing += delta.x / 3
 	_camera_pitch += delta.y / 3

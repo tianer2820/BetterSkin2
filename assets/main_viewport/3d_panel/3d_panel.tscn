@@ -124,6 +124,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = ">"
 
+[connection signal="visibility_toggle" from="HBox/3DOverlay/VBox/BodyPanel" to="." method="_on_BodyPanel_visibility_toggle"]
+[connection signal="visibility_toggle" from="HBox/3DOverlay/VBox/BodyPanel2" to="." method="_on_BodyPanel2_visibility_toggle"]
 [connection signal="item_selected" from="HBox/3DOverlay/VBox/PoseOption" to="." method="_on_PoseOption_item_selected"]
 [connection signal="pressed" from="HBox/3DOverlay/VBox/HButtonBox/ButtonLeft" to="HBox/3DOverlay" method="_on_ButtonLeft_pressed"]
 [connection signal="pressed" from="HBox/3DOverlay/VBox/HButtonBox/ButtonMin" to="HBox/3DOverlay" method="_on_ButtonMin_pressed"]

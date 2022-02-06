@@ -27,3 +27,32 @@ func get_pose_list() -> Array:
 
 func set_pose(pose: String):
 	$AnimationPlayer.play(pose)
+
+
+func set_part_visibility(part_id, visibility):
+	match part_id:
+		CST.BodyPartID.HEAD:
+			$Armature/Skeleton/Head.visible = visibility
+		CST.BodyPartID.BODY:
+			$Armature/Skeleton/Body.visible = visibility
+		CST.BodyPartID.ARM_L:
+			$"Armature/Skeleton/Arm L".visible = visibility
+		CST.BodyPartID.ARM_R:
+			$"Armature/Skeleton/Arm R".visible = visibility
+		CST.BodyPartID.LEG_L:
+			$"Armature/Skeleton/Leg L".visible = visibility
+		CST.BodyPartID.LEG_R:
+			$"Armature/Skeleton/Leg R".visible = visibility
+		
+		CST.BodyPartID.HEAD2:
+			$Armature/Skeleton/Hat.visible = visibility
+		CST.BodyPartID.BODY2:
+			$"Armature/Skeleton/Second Body".visible = visibility
+		CST.BodyPartID.ARM_L2:
+			$"Armature/Skeleton/Second Arm L".visible = visibility
+		CST.BodyPartID.ARM_R2:
+			$"Armature/Skeleton/Second Arm R".visible = visibility
+		CST.BodyPartID.LEG_L2:
+			$"Armature/Skeleton/Second Leg L".visible = visibility
+		CST.BodyPartID.LEG_R2:
+			$"Armature/Skeleton/Second Leg R".visible = visibility

@@ -11,7 +11,17 @@ func _ready() -> void:
 		pose_choice.add_item(pose)
 
 
+# set position
 func _on_PoseOption_item_selected(index: int) -> void:
 	var pose_choice = $"HBox/3DOverlay/VBox/PoseOption"
 	var pose = pose_choice.get_item_text(index)
-	var poses = $"ViewportRenderer/3DViewport/3DWorld".set_pose(pose)
+	$"ViewportRenderer/3DViewport/3DWorld".set_pose(pose)
+
+
+# set part visibility
+# first layer
+func _on_BodyPanel_visibility_toggle(part_id, visiblity) -> void:
+	$"ViewportRenderer/3DViewport/3DWorld".set_part_visibility(part_id, visiblity)
+
+func _on_BodyPanel2_visibility_toggle(part_id, visiblity) -> void:
+	$"ViewportRenderer/3DViewport/3DWorld".set_part_visibility(part_id + CST.BodyPartID.HEAD2, visiblity)
