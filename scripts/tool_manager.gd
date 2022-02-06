@@ -29,25 +29,27 @@ var _prime_color: Color = Color(1, 1, 1)
 # static tool objects
 var TOOL_TEST: ToolBase
 var TOOL_DROPPER: ToolBase
-
+var TOOL_ERASER: ToolBase
 
 func _ready() -> void:
-	
+	# test tool
 	var test_tool = load(
 			"res://scripts/tools/test_tool.gd") as GDScript
 	TOOL_TEST = test_tool.new()
 	_tool_list.append(TOOL_TEST)
 	
+	# dropper
 	TOOL_DROPPER = load("res://scripts/tools/dropper.gd").new()
 	_tool_list.append(TOOL_DROPPER)
 	
 	_check_active_tool_valid()
 	emit_signal("tool_list_changed")
-	
-	
 	# register quick tool
 	QuickToolManager.register_quick_tool("quick_tool_dropper", TOOL_DROPPER)
 
+	# eraser
+	TOOL_ERASER = load("res://scripts/tools/eraser.gd").new()
+	_tool_list.append(TOOL_ERASER)
 
 
 # manipulate tool list
