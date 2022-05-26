@@ -33,7 +33,7 @@ Solving these problems is the primary goal of this project.
 - plugins
 - paint custom models
 
-## Contirbute
+## Contribute
 This projects is still in its early stage, many api/structure may change.
 
 Contribution is welcomed, simply start a pull request.
