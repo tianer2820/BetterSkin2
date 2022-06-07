@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://arts/grass_block_side.png" type="Texture" id=1]
-[ext_resource path="res://assets/main_viewport/3d_panel/3Dworld.gd" type="Script" id=2]
+[ext_resource path="res://assets/main_viewport/3d_panel/3DWorld.gd" type="Script" id=2]
 [ext_resource path="res://assets/main_viewport/3d_panel/model/rig_basic.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/main_viewport/3d_panel/uv_viewport.gd" type="Script" id=4]
 [ext_resource path="res://assets/main_viewport/3d_panel/uv_world.tres" type="World" id=5]
