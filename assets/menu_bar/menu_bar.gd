@@ -10,6 +10,7 @@ func _ready() -> void:
 	file_menu.add_item("New", CST.MainMenuID.FILE_NEW, KEY_MASK_CMD | KEY_N)
 	file_menu.add_item("Open", CST.MainMenuID.FILE_OPEN, KEY_MASK_CMD | KEY_O)
 	file_menu.add_item("Save", CST.MainMenuID.FILE_SAVE, KEY_MASK_CMD | KEY_S)
+	file_menu.add_item("Save As...", CST.MainMenuID.FILE_SAVEAS, KEY_MASK_CMD | KEY_MASK_SHIFT | KEY_S)
 	file_menu.add_separator()
 	file_menu.add_item("Import", CST.MainMenuID.FILE_IMPORT)
 	file_menu.add_item("Export", CST.MainMenuID.FILE_EXPORT)
@@ -45,12 +46,19 @@ func _on_file_menu_id_pressed(id: int):
 	match id:
 		CST.MainMenuID.FILE_NEW:
 			# new
+			DocumentManager.ask_create_new_skin()
 			pass
 		CST.MainMenuID.FILE_OPEN:
 			# open
+			DocumentManager.ask_open_skin()
 			pass
 		CST.MainMenuID.FILE_SAVE:
 			# save
+			DocumentManager.ask_save_skin()
+			pass
+		CST.MainMenuID.FILE_SAVEAS:
+			# save
+			DocumentManager.ask_save_skin(true)
 			pass
 		CST.MainMenuID.FILE_IMPORT:
 			# import a file as a layer

@@ -20,7 +20,6 @@ static func render_skin_export(skin: SkinDocument) -> Image:
 				Vector2(0, 0))
 	return final_img
 
-
 static func render_skin_preview() -> Image:
 	var skin = DocumentManager.active_skin
 	var active_layer = DocumentManager.active_layer_index

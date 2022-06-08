@@ -75,9 +75,14 @@ func ask_create_new_skin():
 	pass
 # popup window to browse and open a skin file
 func ask_open_skin():
+	var dialog: FileDialog = get_node(CST.OPEN_SKIN_DIALOG)
+	dialog.popup_centered()
 	pass
 # popup window to save skin to a file
 func ask_save_skin(save_as=false):
+	if save_as:
+		var dialog: FileDialog = get_node(CST.SAVE_SKIN_DIALOG)
+		dialog.popup_centered()
 	pass
 func ask_import():
 	var dialog: FileDialog = get_node(CST.IMPORT_PNG_DIALOG)
