@@ -26,7 +26,5 @@ func _on_BodyPanel_visibility_toggle(part_id, visiblity) -> void:
 func _on_BodyPanel2_visibility_toggle(part_id, visiblity) -> void:
 	$"ViewportRenderer/3DViewport/3DWorld".set_part_visibility(part_id + CST.BodyPartID.HEAD2, visiblity)
 
-
-func _on_CheckBox_toggled(button_pressed):
+func _on_GridCheckbox_toggled(button_pressed):
 	$"ViewportRenderer/3DViewport/3DWorld".toggle_grid(button_pressed)
-	pass # Replace with function body.
