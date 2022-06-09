@@ -387,8 +387,8 @@ mode = 1
 access = 2
 filters = PoolStringArray( "*.png; PNG Files" )
 show_hidden_files = true
-current_dir = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2"
-current_path = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2/"
+current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
+current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 9 )
 
 [node name="ExportPNGDialog" type="FileDialog" parent="GlobalDialogs"]
@@ -406,8 +406,8 @@ resizable = true
 access = 2
 filters = PoolStringArray( "*.png; PNG Files" )
 show_hidden_files = true
-current_dir = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2"
-current_path = "/Toby/Documents/MY OWN FILES/Programming/BetterSkin2/"
+current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
+current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 10 )
 
 [node name="PreferencesDialog" type="WindowDialog" parent="GlobalDialogs"]
