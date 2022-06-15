@@ -11,9 +11,6 @@ margin_right = 403.0
 margin_bottom = 502.0
 rect_clip_content = true
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ViewportRenderer" type="ViewportContainer" parent="."]
 anchor_right = 1.0
@@ -55,7 +52,7 @@ size_flags_vertical = 3
 modulate = Color( 1, 1, 1, 0.690196 )
 margin_left = 318.0
 margin_right = 397.0
-margin_bottom = 375.0
+margin_bottom = 403.0
 size_flags_vertical = 0
 script = ExtResource( 5 )
 __meta__ = {
@@ -66,7 +63,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 72.0
-margin_bottom = 368.0
+margin_bottom = 396.0
 
 [node name="Label" type="Label" parent="HBox/3DOverlay/VBox"]
 margin_right = 65.0
@@ -84,21 +81,28 @@ margin_top = 167.0
 margin_right = 65.0
 margin_bottom = 295.0
 
-[node name="Label2" type="Label" parent="HBox/3DOverlay/VBox"]
+[node name="GridCheckbox" type="CheckBox" parent="HBox/3DOverlay/VBox"]
 margin_top = 299.0
 margin_right = 65.0
-margin_bottom = 313.0
+margin_bottom = 323.0
+pressed = true
+text = "Grid"
+
+[node name="Label2" type="Label" parent="HBox/3DOverlay/VBox"]
+margin_top = 327.0
+margin_right = 65.0
+margin_bottom = 341.0
 text = "Pose"
 
 [node name="PoseOption" type="OptionButton" parent="HBox/3DOverlay/VBox"]
-margin_top = 317.0
+margin_top = 345.0
 margin_right = 65.0
-margin_bottom = 337.0
+margin_bottom = 365.0
 
 [node name="HButtonBox" type="HBoxContainer" parent="HBox/3DOverlay/VBox"]
-margin_top = 341.0
+margin_top = 369.0
 margin_right = 65.0
-margin_bottom = 361.0
+margin_bottom = 389.0
 alignment = 1
 
 [node name="ButtonLeft" type="Button" parent="HBox/3DOverlay/VBox/HButtonBox"]
@@ -126,6 +130,7 @@ text = ">"
 
 [connection signal="visibility_toggle" from="HBox/3DOverlay/VBox/BodyPanel" to="." method="_on_BodyPanel_visibility_toggle"]
 [connection signal="visibility_toggle" from="HBox/3DOverlay/VBox/BodyPanel2" to="." method="_on_BodyPanel2_visibility_toggle"]
+[connection signal="toggled" from="HBox/3DOverlay/VBox/GridCheckbox" to="." method="_on_GridCheckbox_toggled"]
 [connection signal="item_selected" from="HBox/3DOverlay/VBox/PoseOption" to="." method="_on_PoseOption_item_selected"]
 [connection signal="pressed" from="HBox/3DOverlay/VBox/HButtonBox/ButtonLeft" to="HBox/3DOverlay" method="_on_ButtonLeft_pressed"]
 [connection signal="pressed" from="HBox/3DOverlay/VBox/HButtonBox/ButtonMin" to="HBox/3DOverlay" method="_on_ButtonMin_pressed"]

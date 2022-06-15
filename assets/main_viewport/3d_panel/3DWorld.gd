@@ -67,6 +67,8 @@ func set_part_visibility(part_id, visibility):
 	$"Rig basic".set_part_visibility(part_id, visibility)
 	$"UVViewport/Rig basic2".set_part_visibility(part_id, visibility)
 
+func toggle_grid(grid: bool):
+	$"Rig basic".material.set_shader_param("use_grid", grid)
 
 func move_camera(delta: Vector2):
 	_camera_facing += delta.x / 3
