@@ -6,9 +6,6 @@
 margin_right = 954.0
 margin_bottom = 20.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FileButton" type="MenuButton" parent="."]
 margin_right = 35.0

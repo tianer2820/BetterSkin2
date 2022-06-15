@@ -6,6 +6,7 @@ enum MainMenuID{
 	FILE_NEW,
 	FILE_OPEN,
 	FILE_SAVE,
+	FILE_SAVEAS,
 	FILE_CLOSE,
 	FILE_IMPORT,
 	FILE_EXPORT,
@@ -21,7 +22,9 @@ enum MainMenuID{
 
 const GLOBAL_DIALOG_ROOT = "/root/GUIRoot/GlobalDialogs/"
 const EXPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ExportPNGDialog"
+const SAVE_SKIN_DIALOG = GLOBAL_DIALOG_ROOT + "SaveSkinDialog"
 const IMPORT_PNG_DIALOG = GLOBAL_DIALOG_ROOT + "ImportPNGDialog"
+const OPEN_SKIN_DIALOG = GLOBAL_DIALOG_ROOT + "OpenSkinDialog"
 const PREFERENCE_DIALOG = GLOBAL_DIALOG_ROOT + "PreferencesDialog"
 
 enum TreeButton{

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/gui_root.gd" type="Script" id=1]
 [ext_resource path="res://arts/icons.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/global_dialogs/open_png_dialog.gd" type="Script" id=9]
 [ext_resource path="res://assets/global_dialogs/export_png_dialog.gd" type="Script" id=10]
 [ext_resource path="res://assets/layer_dropdown/layer_dropdown.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/save_skin_dialog.gd" type="Script" id=12]
+[ext_resource path="res://assets/open_skin_dialog.gd" type="Script" id=13]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 3.0
@@ -391,6 +393,26 @@ current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
 current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 9 )
 
+[node name="OpenSkinDialog" type="FileDialog" parent="GlobalDialogs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -144.0
+margin_right = 208.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 250, 87.5 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.bs2; BetterSkin2 Skin Files" )
+show_hidden_files = true
+current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
+current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
+script = ExtResource( 13 )
+
 [node name="ExportPNGDialog" type="FileDialog" parent="GlobalDialogs"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -410,6 +432,24 @@ current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
 current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 10 )
 
+[node name="SaveSkinDialog" type="FileDialog" parent="GlobalDialogs"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -222.5
+margin_top = -152.0
+margin_right = 222.5
+margin_bottom = 152.0
+rect_min_size = Vector2( 250, 87.5 )
+resizable = true
+access = 2
+filters = PoolStringArray( "*.bs2; BetterSkin2 Skin Files" )
+show_hidden_files = true
+current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
+current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
+script = ExtResource( 12 )
+
 [node name="PreferencesDialog" type="WindowDialog" parent="GlobalDialogs"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -420,5 +460,10 @@ margin_top = -206.0
 margin_right = 288.0
 margin_bottom = 206.0
 
+[connection signal="pressed" from="VBox/ConvenientBar/ButtonNew" to="." method="_on_ButtonNew_pressed"]
+[connection signal="pressed" from="VBox/ConvenientBar/ButtonOpen" to="." method="_on_ButtonOpen_pressed"]
+[connection signal="pressed" from="VBox/ConvenientBar/ButtonSave" to="." method="_on_ButtonSave_pressed"]
 [connection signal="files_selected" from="GlobalDialogs/ImportPNGDialog" to="GlobalDialogs/ImportPNGDialog" method="_on_OpenPNGDialog_files_selected"]
+[connection signal="file_selected" from="GlobalDialogs/OpenSkinDialog" to="GlobalDialogs/OpenSkinDialog" method="_on_OpenSkinDialog_file_selected"]
 [connection signal="file_selected" from="GlobalDialogs/ExportPNGDialog" to="GlobalDialogs/ExportPNGDialog" method="_on_ExportPNGDialog_file_selected"]
+[connection signal="file_selected" from="GlobalDialogs/SaveSkinDialog" to="GlobalDialogs/SaveSkinDialog" method="_on_SaveSkinDialog_file_selected"]
