@@ -2,5 +2,332 @@
     {
         "name": "Head.F",
         "rect": [8, 8, 8, 8]
-    }
+    },
+    {
+        "name": "Head.R",
+        "rect": [0, 8, 8, 8]
+    },
+    {
+        "name": "Head.L",
+        "rect": [16, 8, 8, 8]
+    },
+    {
+        "name": "Head.B",
+        "rect": [24, 8, 8, 8]
+    },
+    {
+        "name": "Head.U",
+        "rect": [8, 0, 8, 8]
+    },
+    {
+        "name": "Head.D",
+        "rect": [16, 0, 8, 8]
+    },
+
+
+    {
+        "name": "Hat.F",
+        "rect": [40, 8, 8, 8]
+    },
+    {
+        "name": "Hat.R",
+        "rect": [32, 8, 8, 8]
+    },
+    {
+        "name": "Hat.L",
+        "rect": [48, 8, 8, 8]
+    },
+    {
+        "name": "Hat.B",
+        "rect": [56, 8, 8, 8]
+    },
+    {
+        "name": "Hat.U",
+        "rect": [40, 0, 8, 8]
+    },
+    {
+        "name": "Hat.D",
+        "rect": [48, 0, 8, 8]
+    },
+
+
+
+
+    {
+        "name": "RLeg.F",
+        "rect": [4, 20, 4, 12]
+    },
+    {
+        "name": "RLeg.L",
+        "rect": [8, 20, 4, 12]
+    },
+    {
+        "name": "RLeg.R",
+        "rect": [0, 20, 4, 12]
+    },
+    {
+        "name": "RLeg.B",
+        "rect": [12, 20, 4, 12]
+    },
+    {
+        "name": "RLeg.U",
+        "rect": [4, 16, 4, 4]
+    },
+    {
+        "name": "RLeg.D",
+        "rect": [8, 16, 4, 4]
+    },
+
+
+
+    {
+        "name": "RLeg2.F",
+        "rect": [4, 36, 4, 12]
+    },
+    {
+        "name": "RLeg2.L",
+        "rect": [8, 36, 4, 12]
+    },
+    {
+        "name": "RLeg2.R",
+        "rect": [0, 36, 4, 12]
+    },
+    {
+        "name": "RLeg2.B",
+        "rect": [12, 36, 4, 12]
+    },
+    {
+        "name": "RLeg2.U",
+        "rect": [4, 32, 4, 4]
+    },
+    {
+        "name": "RLeg2.D",
+        "rect": [8, 32, 4, 4]
+    },
+
+
+
+
+    
+    {
+        "name": "LLeg2.F",
+        "rect": [4, 52, 4, 12]
+    },
+    {
+        "name": "LLeg2.L",
+        "rect": [8, 52, 4, 12]
+    },
+    {
+        "name": "LLeg2.R",
+        "rect": [0, 52, 4, 12]
+    },
+    {
+        "name": "LLeg2.B",
+        "rect": [12, 52, 4, 12]
+    },
+    {
+        "name": "LLeg2.U",
+        "rect": [4, 48, 4, 4]
+    },
+    {
+        "name": "LLeg2.D",
+        "rect": [8, 48, 4, 4]
+    },
+
+
+        
+    {
+        "name": "LLeg.F",
+        "rect": [20, 52, 4, 12]
+    },
+    {
+        "name": "LLeg.L",
+        "rect": [24, 52, 4, 12]
+    },
+    {
+        "name": "LLeg.R",
+        "rect": [16, 52, 4, 12]
+    },
+    {
+        "name": "LLeg.B",
+        "rect": [28, 52, 4, 12]
+    },
+    {
+        "name": "LLeg.U",
+        "rect": [20, 48, 4, 4]
+    },
+    {
+        "name": "LLeg.D",
+        "rect": [24, 48, 4, 4]
+    },
+
+
+
+    {
+        "name": "LArm.F",
+        "rect": [36, 52, 4, 12]
+    },
+    {
+        "name": "LArm.L",
+        "rect": [40, 52, 4, 12]
+    },
+    {
+        "name": "LArm.R",
+        "rect": [32, 52, 4, 12]
+    },
+    {
+        "name": "LArm.B",
+        "rect": [44, 52, 4, 12]
+    },
+    {
+        "name": "LArm.U",
+        "rect": [36, 48, 4, 4]
+    },
+    {
+        "name": "LArm.D",
+        "rect": [40, 48, 4, 4]
+    },
+
+
+
+    {
+        "name": "LArm2.F",
+        "rect": [52, 52, 4, 12]
+    },
+    {
+        "name": "LArm2.L",
+        "rect": [56, 52, 4, 12]
+    },
+    {
+        "name": "LArm2.R",
+        "rect": [48, 52, 4, 12]
+    },
+    {
+        "name": "LArm2.B",
+        "rect": [60, 52, 4, 12]
+    },
+    {
+        "name": "LArm2.U",
+        "rect": [52, 48, 4, 4]
+    },
+    {
+        "name": "LArm2.D",
+        "rect": [56, 48, 4, 4]
+    },
+
+
+
+
+    
+
+    {
+        "name": "RArm.F",
+        "rect": [44, 20, 4, 12]
+    },
+    {
+        "name": "RArm.L",
+        "rect": [48, 20, 4, 12]
+    },
+    {
+        "name": "RArm.R",
+        "rect": [40, 20, 4, 12]
+    },
+    {
+        "name": "RArm.B",
+        "rect": [52, 20, 4, 12]
+    },
+    {
+        "name": "RArm.U",
+        "rect": [44, 16, 4, 4]
+    },
+    {
+        "name": "RArm.D",
+        "rect": [48, 16, 4, 4]
+    },
+
+
+
+    {
+        "name": "RArm2.F",
+        "rect": [44, 36, 4, 12]
+    },
+    {
+        "name": "RArm2.L",
+        "rect": [48, 36, 4, 12]
+    },
+    {
+        "name": "RArm2.R",
+        "rect": [40, 36, 4, 12]
+    },
+    {
+        "name": "RArm2.B",
+        "rect": [52, 36, 4, 12]
+    },
+    {
+        "name": "RArm2.U",
+        "rect": [44, 32, 4, 4]
+    },
+    {
+        "name": "RArm2.D",
+        "rect": [48, 32, 4, 4]
+    },
+
+
+
+
+
+
+
+    {
+        "name": "Body.F",
+        "rect": [20, 20, 8, 12]
+    },
+    {
+        "name": "Body.L",
+        "rect": [28, 20, 4, 12]
+    },
+    {
+        "name": "Body.R",
+        "rect": [16, 20, 4, 12]
+    },
+    {
+        "name": "Body.B",
+        "rect": [32, 20, 8, 12]
+    },
+    {
+        "name": "Body.U",
+        "rect": [20, 16, 8, 4]
+    },
+    {
+        "name": "Body.D",
+        "rect": [28, 16, 8, 4]
+    },
+
+
+
+    {
+        "name": "Body2.F",
+        "rect": [20, 36, 8, 12]
+    },
+    {
+        "name": "Body2.L",
+        "rect": [28, 36, 4, 12]
+    },
+    {
+        "name": "Body2.R",
+        "rect": [16, 36, 4, 12]
+    },
+    {
+        "name": "Body2.B",
+        "rect": [32, 36, 8, 12]
+    },
+    {
+        "name": "Body2.U",
+        "rect": [20, 32, 8, 4]
+    },
+    {
+        "name": "Body2.D",
+        "rect": [28, 32, 8, 4]
+    },
+
 ]
