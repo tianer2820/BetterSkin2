@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_SaveSkinDialog_file_selected(path):
-	print(path)
+	# print(path)
 	
 	var layers = []
 	

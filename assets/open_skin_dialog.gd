@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_OpenSkinDialog_file_selected(path):
-	print(path)
+	# print(path)
 	var file = File.new()
 	file.open(path, File.READ)
 	var data = file.get_var()

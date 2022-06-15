@@ -17,6 +17,6 @@ func _ready() -> void:
 
 
 func _on_ExportPNGDialog_file_selected(path: String) -> void:
-	print(path)
+	# print(path)
 	var exp_img = SkinRenderer.render_skin_export(DocumentManager.active_skin)
 	exp_img.save_png(path)
