@@ -150,7 +150,7 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 	assert(at_index >= 0 and at_index < self.active_skin.layers.size(),
 			"index out of range")
 	var ret = self.active_skin.layers.pop_at(at_index)
-	if at_index <= self.active_layer_index:
+	if at_index <= self.active_layer_index and self.active_layer_index > 0:
 		self.active_layer_index -= 1
 	queue_emit_layers_changed()
 	queue_render_skin()
