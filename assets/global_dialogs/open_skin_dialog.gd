@@ -27,8 +27,8 @@ func _on_OpenSkinDialog_file_selected(path):
 	DocumentManager.active_skin.resolution = data["resolution"]
 	DocumentManager.active_skin.regions = data["regions"]
 	for layer in data["layers"]:
-		var new_layer = SkinLayer.new("Layer", Vector2(1,1))
-		new_layer.image.load_png_from_buffer(Marshalls.base64_to_raw(layer))
+		var new_layer = SkinLayer.new(layer[0], Vector2(1,1))
+		new_layer.image.load_png_from_buffer(Marshalls.base64_to_raw(layer[1]))
 		DocumentManager.add_layer(new_layer, DocumentManager.layers.size())
 	
 	DocumentManager.queue_render_skin()
