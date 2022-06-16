@@ -145,3 +145,4 @@ func _on_LayersMenu_id_pressed(id: int) -> void:
 
 func _on_BlendSlider_value_changed(value):
 	DocumentManager.active_layer.alpha = get_node("../BlendSlider").value / 100
+	DocumentManager.queue_render_skin()
