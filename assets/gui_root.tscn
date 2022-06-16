@@ -11,8 +11,8 @@
 [ext_resource path="res://assets/global_dialogs/open_png_dialog.gd" type="Script" id=9]
 [ext_resource path="res://assets/global_dialogs/export_png_dialog.gd" type="Script" id=10]
 [ext_resource path="res://assets/layer_dropdown/layer_dropdown.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/save_skin_dialog.gd" type="Script" id=12]
-[ext_resource path="res://assets/open_skin_dialog.gd" type="Script" id=13]
+[ext_resource path="res://assets/global_dialogs/save_skin_dialog.gd" type="Script" id=12]
+[ext_resource path="res://assets/global_dialogs/open_skin_dialog.gd" type="Script" id=13]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 3.0

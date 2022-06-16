@@ -22,7 +22,7 @@ func _on_SaveSkinDialog_file_selected(path):
 	var layers = []
 	
 	for layer in DocumentManager.active_skin.layers:
-		layers.append(Marshalls.raw_to_base64((layer.image as Image).save_png_to_buffer()))
+		layers.append([layer.name ,Marshalls.raw_to_base64((layer.image as Image).save_png_to_buffer())])
 	
 	var data = {
 		"skin_type": DocumentManager.active_skin.skin_type,

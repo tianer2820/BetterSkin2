@@ -53,6 +53,8 @@ func _sync_active_layer():
 	var layer_idx = DocumentManager.active_layer_index
 	var tree_idx = DocumentManager.layers.size() - 1 - layer_idx
 	self._set_active(tree_idx)
+	var blend = get_node("../BlendSlider") as HSlider
+	blend.value = DocumentManager.active_layer.alpha*100
 
 
 func _set_active(index: int):
@@ -139,3 +141,8 @@ func _on_LayersMenu_id_pressed(id: int) -> void:
 			DocumentManager.pop_layer(DocumentManager.active_layer_index)
 		CST.TreeMenu.MERGE_DOWN:
 			pass
+
+
+func _on_BlendSlider_value_changed(value):
+	DocumentManager.active_layer.alpha = get_node("../BlendSlider").value / 100
+	DocumentManager.queue_render_skin()
