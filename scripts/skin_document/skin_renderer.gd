@@ -11,8 +11,9 @@ static func render_skin_export(skin: SkinDocument) -> Image:
 	for layer in layers:
 		if not layer.visible:
 			continue
-		var img = layer.image as Image
-		var size = img.get_size()
+		var img: Image = Image.new()
+		img.copy_from(layer.image)
+		_multiply_alpha(img, layer.alpha)
 		var new_img = _pixel_resize(img,
 				Vector2(resolution, resolution))		
 		final_img.blend_rect(new_img,
@@ -37,14 +38,19 @@ static func render_skin_preview() -> Image:
 		if not layer.visible:
 			continue
 
-		var new_img: Image
+		var new_img: Image = Image.new()
 		if i == active_layer:
-			# time to add buffer layer
-			new_img = _pixel_resize(draw_buffer.image,
-					Vector2(resolution, resolution))
+			# add paint buffer layer
+			new_img.copy_from(draw_buffer.image)
+#			new_img = _pixel_resize(draw_buffer.image,
+#					Vector2(resolution, resolution))
 		else:
-			var img = layer.image as Image
-			new_img = _pixel_resize(img, Vector2(resolution, resolution))
+			new_img.copy_from(layer.image)
+		
+		# apply the layer alpha blend value
+		_multiply_alpha(new_img, layer.alpha)
+		# resize to render size
+		new_img = _pixel_resize(new_img, Vector2(resolution, resolution))
 			
 		final_img.blend_rect(new_img,
 				Rect2(0, 0, resolution, resolution),
@@ -75,3 +81,16 @@ static func _pixel_resize(img: Image, target_size: Vector2) -> Image:
 	new_img.resize(target_size.x, target_size.y,
 			Image.INTERPOLATE_NEAREST)
 	return new_img
+
+# edit the image inplace, multiply the entire alpha channel
+static func _multiply_alpha(img: Image, alpha: float):
+	var w = img.get_width()
+	var h = img.get_height()
+	img.lock()
+	for y in range(h):
+		for x in range(w):
+			var pixel_col = img.get_pixel(x, y)
+			pixel_col.a *= alpha
+			img.set_pixel(x, y, pixel_col)
+	img.unlock()
+
