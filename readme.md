@@ -5,6 +5,9 @@ BetterSkin2 aims to be a feature-rich, customizable and easy-to-use Minecraft sk
 
 **This project is not production ready yet**
 
+Some dev screenshots:
+![screenshot0](screenshots/screenshot0000.png)
+
 ## Why another skin editor
 There are a lot of MC skin editor out there, but each of them have some issues including:
 - Only available online
