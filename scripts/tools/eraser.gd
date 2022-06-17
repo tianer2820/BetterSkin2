@@ -31,6 +31,8 @@ func pen_down(uv: Vector2):
 func pen_up(uv: Vector2):
 	is_pressed = false
 	_erase_pixel(uv)
+	DocumentManager.apply_draw_buffer()
+	DocumentManager.queue_render_skin()
 
 # called when mouse move, even if not pressed
 func pen_move(uv: Vector2):
