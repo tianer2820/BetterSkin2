@@ -8,7 +8,7 @@ var _active_tool: ToolBase
 
 # panel resources
 var INTEGER_PANEL = preload("res://assets/tool_settings_panel/property_panels/integer_panel.tscn") as PackedScene
-
+var FLOAT_PANEL = preload("res://assets/tool_settings_panel/property_panels/float_panel.tscn") as PackedScene
 
 
 func _ready() -> void:
@@ -38,7 +38,21 @@ func _load_tool(tool_obj):
 				panel.set_value(tool_obj.get_prop(p_name))
 				panel.connect("value_changed", self, "_on_prop_panel_change", [p_name, panel])
 				$VBox/Scroll/VBox.add_child(panel)
+			ToolProp.FLOAT:
+				var panel = FLOAT_PANEL.instance() as PropPanelBase
+				panel.set_name(p_name)
+				panel.set_prop(prop)
+				panel.set_value(tool_obj.get_prop(p_name))
+				panel.connect("value_changed", self, "_on_prop_panel_change", [p_name, panel])
+				$VBox/Scroll/VBox.add_child(panel)
+			ToolProp.BRUSH_TIP:
+				pass
+			ToolProp.BOOL:
+				pass
+			ToolProp.CHOICE:
+				pass
 			_:
+				print_debug('tool display prop unknown:', prop.prop_type)
 				pass
 
 func _clear():
@@ -52,9 +66,10 @@ func _on_active_tool_changed():
 	var active_tool = ToolManager.get_active_tool()
 	_load_tool(active_tool)
 
-func _on_manager_tool_modified():
-	var active_tool = ToolManager.get_active_tool()
-	_load_tool(active_tool)
+func _on_manager_tool_modified(modified_tool):
+	pass
+#	var active_tool = ToolManager.get_active_tool()
+#	_load_tool(active_tool)
 
 
 # child panel signal

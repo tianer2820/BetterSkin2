@@ -249,10 +249,10 @@ split_offset = 40
 
 [node name="ColorSelector" parent="VBox/MainSplit/SettingsSplit" instance=ExtResource( 6 )]
 margin_right = 310.0
-margin_bottom = 272.0
+margin_bottom = 274.0
 
 [node name="ToolSplit" type="VSplitContainer" parent="VBox/MainSplit/SettingsSplit"]
-margin_top = 284.0
+margin_top = 286.0
 margin_right = 310.0
 margin_bottom = 482.0
 split_offset = 70
@@ -266,7 +266,7 @@ margin_bottom = 108.0
 [node name="ToolSettingsPanel" parent="VBox/MainSplit/SettingsSplit/ToolSplit" instance=ExtResource( 4 )]
 margin_top = 120.0
 margin_right = 310.0
-margin_bottom = 198.0
+margin_bottom = 196.0
 
 [node name="MainViewport" parent="VBox/MainSplit" instance=ExtResource( 5 )]
 anchor_right = 0.0
@@ -389,8 +389,6 @@ mode = 1
 access = 2
 filters = PoolStringArray( "*.png; PNG Files" )
 show_hidden_files = true
-current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
-current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 9 )
 
 [node name="OpenSkinDialog" type="FileDialog" parent="GlobalDialogs"]
@@ -409,8 +407,6 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.bs2; BetterSkin2 Skin Files" )
 show_hidden_files = true
-current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
-current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 13 )
 
 [node name="ExportPNGDialog" type="FileDialog" parent="GlobalDialogs"]
@@ -428,8 +424,6 @@ resizable = true
 access = 2
 filters = PoolStringArray( "*.png; PNG Files" )
 show_hidden_files = true
-current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
-current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 10 )
 
 [node name="SaveSkinDialog" type="FileDialog" parent="GlobalDialogs"]
@@ -446,8 +440,6 @@ resizable = true
 access = 2
 filters = PoolStringArray( "*.bs2; BetterSkin2 Skin Files" )
 show_hidden_files = true
-current_dir = "/home/hitcoder/Documents/GodotProjects/BetterSkin2"
-current_path = "/home/hitcoder/Documents/GodotProjects/BetterSkin2/"
 script = ExtResource( 12 )
 
 [node name="PreferencesDialog" type="WindowDialog" parent="GlobalDialogs"]

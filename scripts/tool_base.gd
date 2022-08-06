@@ -119,14 +119,13 @@ static func int_prop(default, val_min, val_max, val_step):
 	prop.value_step = val_step
 	return prop
 
-static func float_prop(default, val_min, val_max, val_step):
+static func float_prop(default, val_min, val_max):
 	var prop = ToolProp.new()
 	prop.prop_type = ToolProp.FLOAT
 	prop.value_default = default
 	
 	prop.value_min = val_min
 	prop.value_max = val_max
-	prop.value_step = val_step
 	return prop
 
 static func brush_tip_prop(default):
