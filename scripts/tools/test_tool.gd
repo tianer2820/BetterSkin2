@@ -13,7 +13,7 @@ func _init() -> void:
 	displayed_props = {
 		"test_int": int_prop(3, 0, 6, 1),
 		"test_float": float_prop(1.234, -2, 2),
-		"test_tip": brush_tip_prop(ToolProp.new()),
+		"test_tip": brush_tip_prop(BrushTip.new()),
 		"test_bool": bool_prop(false),
 		"test_choice": choice_prop(0, ['aaa', 'bbb', 'ccc']),
 	}

@@ -128,7 +128,7 @@ static func float_prop(default, val_min, val_max):
 	prop.value_max = val_max
 	return prop
 
-static func brush_tip_prop(default):
+static func brush_tip_prop(default: BrushTip):
 	var prop = ToolProp.new()
 	prop.prop_type = ToolProp.BRUSH_TIP
 	prop.value_default = default
