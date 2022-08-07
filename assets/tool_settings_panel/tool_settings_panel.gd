@@ -9,6 +9,7 @@ var _active_tool: ToolBase
 # panel resources
 var INTEGER_PANEL = preload("res://assets/tool_settings_panel/property_panels/integer_panel.tscn") as PackedScene
 var FLOAT_PANEL = preload("res://assets/tool_settings_panel/property_panels/float_panel.tscn") as PackedScene
+var BOOL_PANEL = preload("res://assets/tool_settings_panel/property_panels/bool_panel.tscn") as PackedScene
 
 
 func _ready() -> void:
@@ -48,7 +49,12 @@ func _load_tool(tool_obj):
 			ToolProp.BRUSH_TIP:
 				pass
 			ToolProp.BOOL:
-				pass
+				var panel = BOOL_PANEL.instance() as PropPanelBase
+				panel.set_name(p_name)
+				panel.set_prop(prop)
+				panel.set_value(tool_obj.get_prop(p_name))
+				panel.connect("value_changed", self, "_on_prop_panel_change", [p_name, panel])
+				$VBox/Scroll/VBox.add_child(panel)
 			ToolProp.CHOICE:
 				pass
 			_:
