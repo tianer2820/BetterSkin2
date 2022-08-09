@@ -9,10 +9,7 @@ This is a simple tool template you can copy from to create new tools
 func _init() -> void:
 	name = "Displayed Tool Name"
 	icon = load("path/to/your/icon")
-	
-	tool_type = "unique_tool_identifier"
-	tool_is_builtin = true
-	
+		
 	displayed_props = {
 		"some_int": int_prop(0, 0, 100, 1),
 		"some_brush_tip": brush_tip_prop(BrushTip.new()),
@@ -34,9 +31,3 @@ func pen_up(uv: Vector2):
 func pen_move(uv: Vector2):
 	assert(false, "unimplemented")
 
-
-# create a deep copy of this instance
-func duplicate():
-	var new_tool = load("the/script/file/of/this/class").new()
-	new_tool.copy(self)
-	return new_tool

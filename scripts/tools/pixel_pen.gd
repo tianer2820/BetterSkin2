@@ -6,10 +6,7 @@ var _is_down = false
 func _init() -> void:
 	name = "Pixel Pen"
 	icon = load("res://scripts/tools/pixel_pen_icon.tres")
-	
-	tool_type = "pixel_pen"
-	tool_is_builtin = true
-	
+		
 	displayed_props = {
 		"brush_tip": brush_tip_prop(BrushTip.new()),
 		"strength": float_prop(1, 0, 1),
@@ -45,20 +42,3 @@ func _draw_pixel(uv):
 		img.set_pixelv(uv, ToolManager.get_prime_color())
 		img.unlock()
 		DocumentManager.queue_render_skin()
-
-
-
-
-
-
-func to_dict() -> Dictionary:
-	return {}
-
-func load_dict(dict):
-	pass
-
-func duplicate():
-	var new_tool = load("res://scripts/tools/pixel_pen.gd").new()
-	new_tool.copy(self)
-	return new_tool
-	

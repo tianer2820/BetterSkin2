@@ -6,10 +6,7 @@ var _is_down = false
 func _init() -> void:
 	name = "Test Tool"
 	icon = load("res://scripts/tools/test_tool_icon.png")
-	
-	tool_type = "test_tool"
-	tool_is_builtin = true
-	
+		
 	displayed_props = {
 		"test_int": int_prop(3, 0, 6, 1),
 		"test_float": float_prop(1.234, -2, 2),
@@ -17,12 +14,6 @@ func _init() -> void:
 		"test_bool": bool_prop(false),
 		"test_choice": choice_prop(0, ['aaa', 'bbb', 'ccc']),
 	}
-	
-func duplicate():
-	var new_tool = load("res://scripts/tools/test_tool.gd").new()
-	new_tool.copy(self)
-	return new_tool
-
 
 # draw related, must override
 func activate(active: bool):

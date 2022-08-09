@@ -91,6 +91,4 @@ __meta__ = {
 
 [connection signal="pressed" from="VBox/HBoxContainer/ButtonScaleUp" to="." method="_on_ButtonScaleUp_pressed"]
 [connection signal="pressed" from="VBox/HBoxContainer/ButtonScaleDown" to="." method="_on_ButtonScaleDown_pressed"]
-[connection signal="item_rmb_selected" from="VBox/ItemList" to="." method="_on_ItemList_item_rmb_selected"]
 [connection signal="item_selected" from="VBox/ItemList" to="." method="_on_ItemList_item_selected"]
-[connection signal="id_pressed" from="VBox/ItemList/PopupMenu" to="." method="_on_PopupMenu_id_pressed"]

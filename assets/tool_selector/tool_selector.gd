@@ -66,19 +66,19 @@ func _sync_tool_list():
 func _on_ItemList_item_selected(index: int) -> void:
 	ToolManager.set_active_tool(_tool_list[index])
 
-func _on_ItemList_item_rmb_selected(index: int, at_position: Vector2) -> void:
-	var global_pos = get_global_mouse_position()
-	var active_tool = get_active_tool()
-	if active_tool.tool_is_builtin:
-		$VBox/ItemList/PopupMenu.set_item_disabled(1, true)
-		$VBox/ItemList/PopupMenu.set_item_disabled(2, true)
-	else:
-		$VBox/ItemList/PopupMenu.set_item_disabled(1, false)
-		$VBox/ItemList/PopupMenu.set_item_disabled(2, false)
-	$VBox/ItemList/PopupMenu.set_item_disabled(0, false)
-
-	$VBox/ItemList/PopupMenu.set_position(global_pos)
-	$VBox/ItemList/PopupMenu.popup()
+#func _on_ItemList_item_rmb_selected(index: int, at_position: Vector2) -> void:
+#	var global_pos = get_global_mouse_position()
+#	var active_tool = get_active_tool()
+#	if active_tool.tool_is_builtin:
+#		$VBox/ItemList/PopupMenu.set_item_disabled(1, true)
+#		$VBox/ItemList/PopupMenu.set_item_disabled(2, true)
+#	else:
+#		$VBox/ItemList/PopupMenu.set_item_disabled(1, false)
+#		$VBox/ItemList/PopupMenu.set_item_disabled(2, false)
+#	$VBox/ItemList/PopupMenu.set_item_disabled(0, false)
+#
+#	$VBox/ItemList/PopupMenu.set_position(global_pos)
+#	$VBox/ItemList/PopupMenu.popup()
 	
 	
 
@@ -94,31 +94,30 @@ func _on_ButtonScaleDown_pressed() -> void:
 	_item_list.fixed_icon_size = Vector2(a, a)
 
 
-func _on_PopupMenu_id_pressed(id: int) -> void:
-	match id:
-		0:
-			# duplicate
-			var active_tool = get_active_tool()
-			var text = yield($VBox/ItemList/RenamePopup.prompt_rename(
-						active_tool.name), "completed")
-			if text != "":
-				# do duplicate
-				var dup_tool = active_tool.duplicate()
-				dup_tool.name = text
-				dup_tool.tool_is_builtin = false
-				ToolManager.add_tool(dup_tool)
-		1:
-			# delete
-			ToolManager.remove_tool(get_active_tool())
-		2:
-			# rename
-			var active_tool = get_active_tool()
-			var text = yield($VBox/ItemList/RenamePopup.prompt_rename(
-						active_tool.name), "completed")
-			if text != "":
-				active_tool.name = text
-				ToolManager.announce_tool_modified(active_tool)
-				
+#func _on_PopupMenu_id_pressed(id: int) -> void:
+#	match id:
+#		0:
+#			# duplicate
+#			var active_tool = get_active_tool()
+#			var text = yield($VBox/ItemList/RenamePopup.prompt_rename(
+#						active_tool.name), "completed")
+#			if text != "":
+#				# do duplicate
+#				var dup_tool = active_tool.duplicate()
+#				dup_tool.name = text
+#				dup_tool.tool_is_builtin = false
+#				ToolManager.add_tool(dup_tool)
+#		1:
+#			# delete
+#			ToolManager.remove_tool(get_active_tool())
+#		2:
+#			# rename
+#			var active_tool = get_active_tool()
+#			var text = yield($VBox/ItemList/RenamePopup.prompt_rename(
+#						active_tool.name), "completed")
+#			if text != "":
+#				active_tool.name = text
+#				ToolManager.announce_tool_modified(active_tool)
 
 
 

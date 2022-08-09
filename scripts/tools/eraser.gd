@@ -11,9 +11,6 @@ func _init() -> void:
 	name = "Eraser"
 	icon = load("res://scripts/tools/eraser.png")
 	
-	tool_type = "eraser"
-	tool_is_builtin = true
-	
 	displayed_props = {
 		"brush_tip": brush_tip_prop(BrushTip.new()),
 	}
@@ -38,14 +35,6 @@ func pen_up(uv: Vector2):
 func pen_move(uv: Vector2):
 	if is_pressed:
 		_erase_pixel(uv)
-
-
-# create a deep copy of this instance
-func duplicate():
-	var new_tool = load("the/script/file/of/this/class").new()
-	new_tool.copy(self)
-	return new_tool
-
 
 func _erase_pixel(uv):
 	var layer = DocumentManager.draw_buffer_layer
