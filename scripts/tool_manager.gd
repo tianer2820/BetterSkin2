@@ -30,6 +30,7 @@ var _prime_color: Color = Color(1, 1, 1)
 var TOOL_TEST: ToolBase
 var TOOL_DROPPER: ToolBase
 var TOOL_ERASER: ToolBase
+var TOOL_PIXEL_PEN: ToolBase
 
 func _ready() -> void:
 	# test tool
@@ -50,6 +51,10 @@ func _ready() -> void:
 	# eraser
 	TOOL_ERASER = load("res://scripts/tools/eraser.gd").new()
 	_tool_list.append(TOOL_ERASER)
+	
+	# pixel pen
+	TOOL_PIXEL_PEN = load("res://scripts/tools/pixel_pen.gd").new()
+	_tool_list.append(TOOL_PIXEL_PEN)
 
 
 # manipulate tool list
