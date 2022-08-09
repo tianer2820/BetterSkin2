@@ -6,14 +6,13 @@ var _is_down = false
 func _init() -> void:
 	name = "Pixel Pen"
 	icon = load("res://scripts/tools/pixel_pen_icon.tres")
-		
-	displayed_props = {
-		"brush_tip": brush_tip_prop(BrushTip.new()),
-		"strength": float_prop(1, 0, 1),
-		"accumulate": bool_prop(false),
-		"mode": choice_prop(0, ['normal', 'add', 'multiply']),
-	}
 	
+	self.add_prop("brush_tip", brush_tip_prop(BrushTip.new()))
+	self.add_prop("strength", float_prop(1, 0, 1))
+	self.add_prop("accumulate", bool_prop(false))
+	self.add_prop("mode", choice_prop(0, ['normal', 'add', 'multiply']))
+
+
 func activate(active: bool):
 	pass
 

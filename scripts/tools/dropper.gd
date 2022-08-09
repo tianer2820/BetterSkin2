@@ -12,9 +12,7 @@ func _init() -> void:
 	name = "Dropper"
 	icon = load("res://scripts/tools/dropper_icon.png")
 	
-	displayed_props = {
-		"radius": int_prop(1, 1, 64, 1),
-	}
+	self.add_prop("radius", int_prop(1, 1, 64, 1))
 
 func activate(active: bool):
 	pass

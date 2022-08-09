@@ -10,22 +10,12 @@ variables that can be modified:
 		the display name of the tool, format should be "tool_name"
 	icon:
 		a texture type to be displayed
-	tool_type:
-		a string used to identify the class, format should be "class_name"
-	tool_is_builtin:
-		if true, the tool cannot be deleted from the ui
-	displayed_props:
-		ToolProp objects, that will be displayed on the ui
 
 must override functions:
-	draw related:
-		activate(active: bool)
-		pen_down(uv: Vector2)
-		pen_up(uv: Vector2)
-		pen_move(uc: Vector2)
-	
-	other:
-		duplicate()
+	activate(active: bool)
+	pen_down(uv: Vector2)
+	pen_up(uv: Vector2)
+	pen_move(uc: Vector2)
 
 """
 
@@ -37,19 +27,24 @@ var icon: Texture
 
 # define the displayed property list
 # does not hold actual value
-var displayed_props: Dictionary
+var _displayed_props: Dictionary
 # dict that actually hold property values
-var _properties: Dictionary = {}
+var _props: Dictionary = {}
 
+# add a property to the tool display panel
+func add_prop(name: String, prop: ToolProp) -> void:
+	_displayed_props[name] = prop
+	self.set_prop(name, prop.value_default)
 
+# set the value of a tool property
 func set_prop(prop_name, value) -> void:
-	_properties[prop_name] = value
+	_props[prop_name] = value
 	ToolManager.announce_tool_modified(self)
 
 func get_prop(prop_name):
-	if prop_name in _properties:
-		return _properties[prop_name]
-	var property = displayed_props[prop_name] as ToolProp
+	if prop_name in _props:
+		return _props[prop_name]
+	var property = _displayed_props[prop_name] as ToolProp
 	return property.value_default
 
 

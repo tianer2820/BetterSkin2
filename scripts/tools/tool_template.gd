@@ -9,11 +9,9 @@ This is a simple tool template you can copy from to create new tools
 func _init() -> void:
 	name = "Displayed Tool Name"
 	icon = load("path/to/your/icon")
-		
-	displayed_props = {
-		"some_int": int_prop(0, 0, 100, 1),
-		"some_brush_tip": brush_tip_prop(BrushTip.new()),
-	}
+	
+	self.add_prop('some_int', int_prop(0, 0, 100, 1))
+	self.add_prop("some_brush_tip", brush_tip_prop(BrushTip.new()))
 
 # called once when tool is selected
 func activate(active: bool):

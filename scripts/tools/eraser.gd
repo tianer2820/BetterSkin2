@@ -11,9 +11,7 @@ func _init() -> void:
 	name = "Eraser"
 	icon = load("res://scripts/tools/eraser.png")
 	
-	displayed_props = {
-		"brush_tip": brush_tip_prop(BrushTip.new()),
-	}
+	self.add_prop("brush_tip", brush_tip_prop(BrushTip.new()))
 
 # called once when tool is selected
 func activate(active: bool):

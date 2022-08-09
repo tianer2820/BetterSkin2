@@ -6,15 +6,13 @@ var _is_down = false
 func _init() -> void:
 	name = "Test Tool"
 	icon = load("res://scripts/tools/test_tool_icon.png")
-		
-	displayed_props = {
-		"test_int": int_prop(3, 0, 6, 1),
-		"test_float": float_prop(1.234, -2, 2),
-		"test_tip": brush_tip_prop(BrushTip.new()),
-		"test_bool": bool_prop(false),
-		"test_choice": choice_prop(0, ['aaa', 'bbb', 'ccc']),
-	}
-
+	
+	self.add_prop("test_int", int_prop(3, 0, 6, 1))
+	self.add_prop("test_float", float_prop(1.234, -2, 2))
+	self.add_prop("test_tip", brush_tip_prop(BrushTip.new()))
+	self.add_prop("test_bool", bool_prop(false))
+	self.add_prop("test_choice", choice_prop(0, ['aaa', 'bbb', 'ccc']))
+	
 # draw related, must override
 func activate(active: bool):
 	pass
