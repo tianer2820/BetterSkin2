@@ -46,21 +46,24 @@ func _draw_pixel(img: Image, uv: Vector2):
 	var img_size = img.get_size()
 	var img_rect = Rect2(0, 0, img_size.x, img_size.y)
 	
+	uv.x = int(uv.x)
+	uv.y = int(uv.y)
 	if img_rect.has_point(uv):
 		
 		# get brush tip size and offset uv point
 		var tip: BrushTip = self.get_prop('brush_tip')
 		var size: int = tip.size
 		var offset = int(size / 2)
-		uv.x -= offset
-		uv.y -= offset
+		var corner = uv - Vector2(offset, offset)
 		
 		img.lock()
 		for x in range(size):
 			for y in range(size):
-				var point = uv
-				point.x += x
-				point.y += y
+				var point = corner + Vector2(x, y)
+				# check for round brush tip
+				if tip.shape == BrushTip.ROUND:
+					if (point - uv).length() > offset:
+						continue
 				if img_rect.has_point(point):
 					img.set_pixelv(point, ToolManager.get_prime_color())
 		img.unlock()
