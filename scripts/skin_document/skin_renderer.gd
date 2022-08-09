@@ -25,7 +25,7 @@ static func render_skin_preview() -> Image:
 	var skin = DocumentManager.active_skin
 	var active_layer = DocumentManager.active_layer_index
 	var draw_buffer = DocumentManager.draw_buffer_layer
-	var tool_indecator = DocumentManager.tool_indecator_layer
+	var tool_indecator = DocumentManager.tool_indicate_layer
 	
 	var layers = skin.layers
 	var resolution = skin.resolution

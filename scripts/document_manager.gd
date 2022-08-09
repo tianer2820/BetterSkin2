@@ -6,14 +6,14 @@ Document manager holds the current opened skin document and manage the rendering
 
 There are three different type of draw targets available:
 	layers in the skin document
-	the tool_indecator layer
+	the tool_indicate_layer
 	the draw_buffer layer
 
 layers in the skin document should not be modified by tools directly, as undo/redo cannot be correctly managed in this way. 
 
 Tools should draw on the draw_buffer layer instead, and let document manager to merge down that layer instead.
 
-The tool_indecator layer are used to preview the effective range of the tool, i.e. brush size, shape indecator. It should be cleared and redrew when the mouse pointer moves.
+The tool_indicator layer are used to preview the effective range of the tool, i.e. brush size, shape indecator. It should be cleared and redrew when the mouse pointer moves.
 
 """
 
@@ -33,7 +33,7 @@ var active_layer_index: int = -1 setget _set_active_layer_index
 var layers: Array setget _read_only, _get_layers
 # tooling layers
 var draw_buffer_layer: SkinLayer setget _read_only
-var tool_indecator_layer: SkinLayer setget _read_only
+var tool_indicate_layer: SkinLayer setget _read_only
 
 # the image that should be displaied on canvas
 var rendered_skin: Image setget _read_only
@@ -98,7 +98,7 @@ func _set_active_skin(skin: SkinDocument):
 	active_skin = skin
 	if skin != null:
 		var res = self.active_skin.resolution
-		tool_indecator_layer = SkinLayer.new("tool_indecator",
+		tool_indicate_layer = SkinLayer.new("tool_indicator",
 				Vector2(res, res))
 		draw_buffer_layer = SkinLayer.new("draw_buffer",
 				Vector2(res, res))
@@ -109,7 +109,7 @@ func _set_active_skin(skin: SkinDocument):
 		
 	else:
 		self.active_layer_index = -1
-		self.tool_indecator_layer = null
+		self.tool_indicate_layer = null
 		self.draw_buffer_layer = null
 		self.selection_mask = null
 
