@@ -47,7 +47,21 @@ func _draw_pixel(img: Image, uv: Vector2):
 	var img_rect = Rect2(0, 0, img_size.x, img_size.y)
 	
 	if img_rect.has_point(uv):
+		
+		# get brush tip size and offset uv point
+		var tip: BrushTip = self.get_prop('brush_tip')
+		var size: int = tip.size
+		var offset = int(size / 2)
+		uv.x -= offset
+		uv.y -= offset
+		
 		img.lock()
-		img.set_pixelv(uv, ToolManager.get_prime_color())
+		for x in range(size):
+			for y in range(size):
+				var point = uv
+				point.x += x
+				point.y += y
+				if img_rect.has_point(point):
+					img.set_pixelv(point, ToolManager.get_prime_color())
 		img.unlock()
 		DocumentManager.queue_render_skin()
