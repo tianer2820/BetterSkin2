@@ -33,6 +33,9 @@ func add_operation(op: Operation):
 		self._operations.append(op)
 		self._last_operation += 1
 	
+	while self._operations.size() > max_history_count:
+		self._operations.pop_front()
+	
 func undo(doc: SkinDocument):
 	if self._last_operation < 0:
 		self._last_operation = -1
@@ -45,19 +48,33 @@ func undo(doc: SkinDocument):
 		
 		match last_op.op_type:
 			Operation.OP_LAYER_ADD:
-				print_debug('unimplemented undo operation')
+				doc.layers.pop_at(last_op.layer_idx)
+				var index = clamp(DocumentManager.active_layer_index, 0, DocumentManager.active_skin.layers.size() - 1)
+				DocumentManager.active_layer_index = index
+				DocumentManager.queue_emit_layers_changed()
+				
 			Operation.OP_LAYER_DEL:
-				print_debug('unimplemented undo operation')
+				var new_layer = SkinLayer.new(last_op.layer_name, last_op.img_old.get_size())
+				new_layer.image.copy_from(last_op.img_old)
+				doc.layers.insert(last_op.layer_idx, new_layer)
+				DocumentManager.active_layer_index = last_op.layer_idx
+				DocumentManager.queue_emit_layers_changed()
+				
 			Operation.OP_LAYER_MOV:
-				print_debug('unimplemented undo operation')
+				var layer = doc.layers.pop_at(last_op.layer_idx2)
+				doc.layers.insert(last_op.layer_idx, layer)
+				DocumentManager.active_layer_index = last_op.layer_idx
+				DocumentManager.queue_emit_layers_changed()
+				
 			Operation.OP_LAYER_MOD:
 				var layer: SkinLayer = doc.layers[last_op.layer_idx]
 				layer.image.copy_from(last_op.img_old)
+				DocumentManager.active_layer_index = last_op.layer_idx
+			
 			_:
 				print_debug('unknown operation type', last_op.op_type)
 		
 		self._last_operation -= 1
-		DocumentManager.active_layer_index = last_op.layer_idx
 		DocumentManager.refresh_skin_buffers()
 		DocumentManager.queue_render_skin()
 
@@ -69,23 +86,34 @@ func redo(doc: SkinDocument):
 		# wrong last operation range
 		self._last_operation = self._operations.size() - 1
 	else:
-		var last_op: Operation = self._operations[self._last_operation + 1]
+		var next_op: Operation = self._operations[self._last_operation + 1]
 		
-		match last_op.op_type:
+		match next_op.op_type:
 			Operation.OP_LAYER_ADD:
-				print_debug('unimplemented redo operation')
+				var new_layer = SkinLayer.new(next_op.layer_name, next_op.img_new.get_size())
+				new_layer.image.copy_from(next_op.img_new)
+				doc.layers.insert(next_op.layer_idx, new_layer)
+				DocumentManager.queue_emit_layers_changed()
+				
 			Operation.OP_LAYER_DEL:
-				print_debug('unimplemented redo operation')
+				doc.layers.pop_at(next_op.layer_idx)
+				DocumentManager.queue_emit_layers_changed()
+				
 			Operation.OP_LAYER_MOV:
-				print_debug('unimplemented redo operation')
+				var layer = doc.layers.pop_at(next_op.layer_idx)
+				doc.layers.insert(next_op.layer_idx2, layer)
+				DocumentManager.queue_emit_layers_changed()
+				
 			Operation.OP_LAYER_MOD:
-				var layer: SkinLayer = doc.layers[last_op.layer_idx]
-				layer.image.copy_from(last_op.img_new)
+				var layer: SkinLayer = doc.layers[next_op.layer_idx]
+				layer.image.copy_from(next_op.img_new)
+				
 			_:
-				print_debug('unknown operation type', last_op.op_type)
+				print_debug('unknown operation type', next_op.op_type)
 		
 		self._last_operation += 1
-		DocumentManager.active_layer_index = last_op.layer_idx
+		var index = clamp(next_op.layer_idx, 0, DocumentManager.active_skin.layers.size() - 1)
+		DocumentManager.active_layer_index = index
 		DocumentManager.refresh_skin_buffers()
 		DocumentManager.queue_render_skin()
 
@@ -100,5 +128,7 @@ class Operation:
 	
 	var op_type = -1
 	var layer_idx: int = 0
-	var img_old: Image = null
-	var img_new: Image = null
+	var layer_idx2: int = -1
+	var img_old: Image = null  # image before the operation
+	var img_new: Image = null  # image after the operation
+	var layer_name: String = 'layer'

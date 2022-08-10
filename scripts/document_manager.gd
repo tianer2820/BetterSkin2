@@ -10,6 +10,8 @@ There are three different type of draw targets available:
 	the draw_buffer layer
 
 layers in the skin document should not be modified by tools directly, as undo/redo cannot be correctly managed in this way. 
+All layer operation done through document manager will be recorded into 
+undo redo history
 
 Tools should draw on the draw_buffer layer instead, and let document manager to merge down that layer instead.
 
@@ -152,6 +154,16 @@ func add_layer(new_layer: SkinLayer, at_index: int = 0):
 	self.active_skin.layers.insert(at_index, new_layer)
 	if at_index <= active_layer_index:
 		self.active_layer_index += 1
+		
+	# record undo redo
+	var operation = HistoryManager.Operation.new()
+	operation.op_type = HistoryManager.Operation.OP_LAYER_ADD
+	operation.layer_idx = at_index
+	operation.img_new = Image.new()
+	operation.img_new.copy_from(new_layer.image)
+	operation.layer_name = new_layer.name
+	self.history_manager.add_operation(operation)
+	
 	queue_emit_layers_changed()
 	queue_render_skin()
 
@@ -161,6 +173,16 @@ func pop_layer(at_index: int = 0) -> SkinLayer:
 	var ret = self.active_skin.layers.pop_at(at_index)
 	if at_index <= self.active_layer_index and self.active_layer_index > 0:
 		self.active_layer_index -= 1
+		
+	# record undo redo
+	var operation = HistoryManager.Operation.new()
+	operation.op_type = HistoryManager.Operation.OP_LAYER_DEL
+	operation.layer_idx = at_index
+	operation.img_old = Image.new()
+	operation.img_old.copy_from(ret.image)
+	operation.layer_name = ret.name
+	self.history_manager.add_operation(operation)
+		
 	queue_emit_layers_changed()
 	queue_render_skin()
 	return ret
