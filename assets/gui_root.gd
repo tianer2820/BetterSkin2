@@ -24,3 +24,11 @@ func _on_ButtonOpen_pressed():
 func _on_ButtonSave_pressed():
 	DocumentManager.ask_save_skin()
 	pass # Replace with function body.
+
+
+func _on_ButtonUndo_pressed():
+	DocumentManager.undo()
+
+
+func _on_ButtonRedo_pressed():
+	DocumentManager.redo()

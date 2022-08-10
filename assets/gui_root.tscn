@@ -455,6 +455,8 @@ margin_bottom = 206.0
 [connection signal="pressed" from="VBox/ConvenientBar/ButtonNew" to="." method="_on_ButtonNew_pressed"]
 [connection signal="pressed" from="VBox/ConvenientBar/ButtonOpen" to="." method="_on_ButtonOpen_pressed"]
 [connection signal="pressed" from="VBox/ConvenientBar/ButtonSave" to="." method="_on_ButtonSave_pressed"]
+[connection signal="pressed" from="VBox/ConvenientBar/ButtonUndo" to="." method="_on_ButtonUndo_pressed"]
+[connection signal="pressed" from="VBox/ConvenientBar/ButtonRedo" to="." method="_on_ButtonRedo_pressed"]
 [connection signal="files_selected" from="GlobalDialogs/ImportPNGDialog" to="GlobalDialogs/ImportPNGDialog" method="_on_OpenPNGDialog_files_selected"]
 [connection signal="file_selected" from="GlobalDialogs/OpenSkinDialog" to="GlobalDialogs/OpenSkinDialog" method="_on_OpenSkinDialog_file_selected"]
 [connection signal="file_selected" from="GlobalDialogs/ExportPNGDialog" to="GlobalDialogs/ExportPNGDialog" method="_on_ExportPNGDialog_file_selected"]

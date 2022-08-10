@@ -35,6 +35,9 @@ var layers: Array setget _read_only, _get_layers
 var draw_buffer_layer: SkinLayer setget _read_only
 var tool_indicate_layer: SkinLayer setget _read_only
 
+# undo redo history manager
+var history_manager: HistoryManager setget _read_only
+
 # the image that should be displaied on canvas
 var rendered_skin: Image setget _read_only
 # mask for selection
@@ -106,6 +109,7 @@ func _set_active_skin(skin: SkinDocument):
 		selection_mask.create(res, res, false, Image.FORMAT_RGBA8)
 				
 		self.active_layer_index = min(0, skin.layers.size() - 1)
+		history_manager = HistoryManager.new()
 		
 	else:
 		self.active_layer_index = -1
@@ -133,7 +137,7 @@ func _set_active_layer_index(new_value):
 		return
 	active_layer_index = new_value
 	
-	draw_buffer_layer.copy_from(self.active_layer)
+	self.refresh_skin_buffers()
 	queue_emit_active_layer_changed()
 
 func _get_layers() -> Array:
@@ -168,8 +172,22 @@ func rename_layer(index: int, new_name: String):
 
 # apply the current draw buffer layer, create undo/redo actions
 func apply_draw_buffer():
-	self.active_layer.image.copy_from(self.draw_buffer_layer.image)
-	print_debug("add undo/redo action here")
+	# save old layer
+	var operation = HistoryManager.Operation.new()
+	operation.op_type = HistoryManager.Operation.OP_LAYER_MOD
+	operation.layer_idx = self.active_layer_index
+	var layer_img = self.active_layer.image
+	operation.img_old = Image.new()
+	operation.img_old.copy_from(layer_img)
+	# apply change
+	layer_img.copy_from(self.draw_buffer_layer.image)
+	# save new layer
+	operation.img_new = Image.new()
+	operation.img_new.copy_from(layer_img)
+	
+	self.history_manager.add_operation(operation)
+
+	
 
 # queue render skin on next frame. Must be called when skin is modified.
 func queue_render_skin():
@@ -178,6 +196,17 @@ func queue_emit_active_layer_changed():
 	_emit_active_layer_changed = true
 func queue_emit_layers_changed():
 	_emit_layers_changed = true
+
+# refresh all skin layer buffers, used when applying undo/redo actions
+func refresh_skin_buffers():
+	draw_buffer_layer.copy_from(self.active_layer)
+	
+	
+# undo redo
+func undo():
+	self.history_manager.undo(self.active_skin)
+func redo():
+	self.history_manager.redo(self.active_skin)
 
 
 func _read_only(new_value):
